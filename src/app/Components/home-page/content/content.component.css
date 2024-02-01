@@ -1,0 +1,11 @@
+/* main-content.component.css */
+
+.main-content {
+  width: 100%; /* Garante que a largura da div seja 100% da largura do pai */
+}
+
+.main-content img {
+  width: 100%; /* Faz com que a largura da imagem seja 100% da largura da div */
+  height: auto; /* Mantém a proporção original da imagem */
+  display: block; /* Remove espaços adicionais abaixo da imagem */
+}
