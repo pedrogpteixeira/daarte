@@ -22,6 +22,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/daarte_icon.ico",
+              "src/web.config",
               "src/assets"
             ],
             "styles": [
