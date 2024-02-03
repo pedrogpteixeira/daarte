@@ -1,0 +1,89 @@
+/* header.component.css */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #65350F; /* Cor desejada */
+  color: #fff; /* Cor do texto, ajuste conforme necessário */
+  z-index: 1000; /* Garante que o cabeçalho esteja acima do conteúdo da página */
+  margin: 0;
+}
+
+.logo img {
+  width: 50px; /* Ajuste conforme necessário */
+  margin-left: 10px;
+}
+
+.right {
+  margin-right: 20px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+
+}
+
+.right img {
+  width: 50px; /* Ajuste conforme necessário */
+  margin-left: 20px;
+}
+
+#nav {
+  width:750px;
+  margin:0 auto;
+  list-style:none;
+}
+
+#nav li {
+  float:left;
+}
+
+#nav li a {
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  padding:10px;
+  color:#fff; /* Cor do texto, ajuste conforme necessário */
+}
+
+#nav a {
+  display:block;
+  text-align:center;
+  width:150px; /* fixed width */
+  text-decoration:none;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #F1E9D2;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #000;
+  padding: 4px 6px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Ajusta a cor do texto nas opções do select */
+nav select {
+  color: #fff;
+  background-color: #65350F; /* Cor desejada */
+}

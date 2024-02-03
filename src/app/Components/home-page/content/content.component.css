@@ -2,6 +2,7 @@
 
 .main-content {
   width: 100%; /* Garante que a largura da div seja 100% da largura do pai */
+  margin-top: 74px; /* Ajuste conforme necessário */
 }
 
 .main-content img {
