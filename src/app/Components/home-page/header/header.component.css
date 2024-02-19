@@ -20,6 +20,13 @@ header {
   margin-left: 10px;
 }
 
+.logo img:hover {
+  cursor: pointer;
+  /* Adicione um efeito de mudança de cor ao passar o mouse */
+  filter: invert(100%);
+  transition: 0.7s;
+}
+
 .right {
   margin-right: 20px;
   justify-content: space-between;
@@ -34,8 +41,8 @@ header {
 }
 
 #nav {
-  width:750px;
-  margin:0 auto;
+  display: flex;
+  justify-content: center;
   list-style:none;
 }
 

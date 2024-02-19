@@ -1,8 +1,19 @@
 /* main-content.component.css */
 
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #000000;
+}
+
 .main-content {
   width: 100%; /* Garante que a largura da div seja 100% da largura do pai */
   margin-top: 74px; /* Ajuste conforme necessário */
+  height: 100%;
+  margin-bottom: 0;
 }
 
 .main-content img {
