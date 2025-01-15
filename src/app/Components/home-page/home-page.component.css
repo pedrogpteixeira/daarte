@@ -6,3 +6,14 @@ div .top-bar{
   height: 50px;
 }
 
+.header {
+  position: fixed;
+  z-index: 1000; /* Fica acima do header */
+  width: 100%;
+}
+
+
+.header.scrolled {
+  top: 0;
+}
+

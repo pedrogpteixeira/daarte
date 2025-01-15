@@ -13,7 +13,6 @@ import {RouterLink} from "@angular/router";
 export class HeaderComponent implements OnInit{
 
     ngOnInit(): void {
-        throw new Error('Method not implemented.');
     }
 
 }

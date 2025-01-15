@@ -1,24 +1,35 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, HostListener} from '@angular/core';
 import {HeaderComponent} from "./header/header.component";
-import {ContentComponent} from "./content/content.component";
 import {FooterComponent} from "./footer/footer.component";
 import {TopBarComponent} from "./top-bar/top-bar.component";
+import {ImageSliderComponent} from "./image-slider/image-slider.component";
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
   imports: [
     HeaderComponent,
-    ContentComponent,
     FooterComponent,
     TopBarComponent,
+    ImageSliderComponent,
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
-export class HomePageComponent implements OnInit{
-    ngOnInit(): void {}
+export class HomePageComponent implements OnInit {
 
-    public constructor() {}
+  isScrolled = false; // Estado para verificar o scroll
+
+  ngOnInit(): void {
+  }
+
+  public constructor() {
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop || 0;
+    this.isScrolled = scrollPosition > 0; // Define o estado baseado na posição do scroll
+  }
 
 }

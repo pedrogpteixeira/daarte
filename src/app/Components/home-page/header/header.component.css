@@ -1,7 +1,8 @@
+/* Header */
 .header {
   position: sticky; /* Fixa o header no topo ao rolar a página */
-  top: 0;
-  z-index: 1000; /* Coloca o header acima de outros elementos */
+  top: 0; /* Sempre no topo da viewport */
+  z-index: 1000; /* Coloca abaixo da top-bar */
   height: 100px; /* Altura do header */
   display: flex; /* Usa Flexbox para organizar os elementos */
   align-items: center; /* Alinha verticalmente os itens no centro */
@@ -14,7 +15,7 @@
 }
 
 .header p {
-  position: absolute; /* Permite centralizar no header sem ser afetado pela flexbox */
+  position: absolute; /* Centraliza independente do flexbox */
   left: 50%; /* Move o centro horizontal */
   transform: translateX(-50%); /* Garante alinhamento central */
   margin: 0; /* Remove margens padrão */
@@ -42,7 +43,6 @@
 .header-images img:hover {
   transform: scale(1.1); /* Leve zoom ao passar o mouse */
 }
-
 
 /*
 header {

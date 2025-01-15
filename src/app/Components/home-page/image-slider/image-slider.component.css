@@ -1,0 +1,16 @@
+.image-slider {
+  position: relative;
+  height: calc(100vh - 100px); /* Ocupa o resto da viewport abaixo do header */
+  width: 100%; /* Ocupa toda a largura */
+  overflow: hidden; /* Garante que o conteúdo extra não apareça */
+}
+
+.image-slider img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta a imagem para cobrir toda a área */
+  z-index: -1; /* Fica atrás do header */
+}

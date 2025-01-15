@@ -10,7 +10,6 @@ import {Component, OnInit} from '@angular/core';
 export class TopBarComponent implements OnInit{
 
     ngOnInit(): void {
-        throw new Error('Method not implemented.');
     }
 
 }
