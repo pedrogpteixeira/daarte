@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from "./header/header.component";
 import {ContentComponent} from "./content/content.component";
 import {FooterComponent} from "./footer/footer.component";
+import {TopBarComponent} from "./top-bar/top-bar.component";
 
 @Component({
   selector: 'app-home-page',
@@ -9,7 +10,8 @@ import {FooterComponent} from "./footer/footer.component";
   imports: [
     HeaderComponent,
     ContentComponent,
-    FooterComponent
+    FooterComponent,
+    TopBarComponent,
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'

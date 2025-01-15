@@ -1,5 +1,50 @@
-/* header.component.css */
+.header {
+  position: sticky; /* Fixa o header no topo ao rolar a página */
+  top: 0;
+  z-index: 1000; /* Coloca o header acima de outros elementos */
+  height: 100px; /* Altura do header */
+  display: flex; /* Usa Flexbox para organizar os elementos */
+  align-items: center; /* Alinha verticalmente os itens no centro */
+  background-color: transparent; /* Transparente inicialmente */
+  transition: background-color 0.3s ease; /* Suaviza a transição de cor */
+}
 
+.header:hover {
+  background-color: #885740; /* Cor ao passar o mouse */
+}
+
+.header p {
+  position: absolute; /* Permite centralizar no header sem ser afetado pela flexbox */
+  left: 50%; /* Move o centro horizontal */
+  transform: translateX(-50%); /* Garante alinhamento central */
+  margin: 0; /* Remove margens padrão */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 31px; /* Ajuste o tamanho da fonte */
+  color: white; /* Cor do texto */
+  text-align: center; /* Centraliza o texto */
+  cursor: pointer;
+}
+
+.header-images {
+  margin-left: auto; /* Empurra o container de imagens para a direita */
+  margin-right: 40px; /* Espaçamento à direita */
+  display: flex; /* Organiza as imagens em linha */
+  gap: 40px; /* Espaçamento entre as imagens */
+}
+
+.header-images img {
+  width: 30px; /* Tamanho das imagens */
+  height: auto; /* Mantém a proporção */
+  cursor: pointer; /* Indica interatividade */
+  transition: transform 0.2s ease; /* Efeito suave no hover */
+}
+
+.header-images img:hover {
+  transform: scale(1.1); /* Leve zoom ao passar o mouse */
+}
+
+
+/*
 header {
   position: fixed;
   top: 0;
@@ -9,20 +54,19 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: #65350F; /* Cor desejada */
-  color: #fff; /* Cor do texto, ajuste conforme necessário */
-  z-index: 1000; /* Garante que o cabeçalho esteja acima do conteúdo da página */
+  background-color: #65350F;
+  color: #fff;
+  z-index: 1000;
   margin: 0;
 }
 
 .logo img {
-  width: 50px; /* Ajuste conforme necessário */
+  width: 50px;
   margin-left: 10px;
 }
 
 .logo img:hover {
   cursor: pointer;
-  /* Adicione um efeito de mudança de cor ao passar o mouse */
   filter: invert(100%);
   transition: 0.7s;
 }
@@ -36,7 +80,7 @@ header {
 }
 
 .right img {
-  width: 50px; /* Ajuste conforme necessário */
+  width: 50px;
   margin-left: 20px;
 }
 
@@ -55,13 +99,13 @@ header {
   text-align:center;
   text-decoration:none;
   padding:10px;
-  color:#fff; /* Cor do texto, ajuste conforme necessário */
+  color:#fff;
 }
 
 #nav a {
   display:block;
   text-align:center;
-  width:150px; /* fixed width */
+  width:150px;
   text-decoration:none;
 }
 
@@ -89,8 +133,9 @@ header {
   display: block;
 }
 
-/* Ajusta a cor do texto nas opções do select */
 nav select {
   color: #fff;
-  background-color: #65350F; /* Cor desejada */
+  background-color: #65350F;
 }
+*/
+
