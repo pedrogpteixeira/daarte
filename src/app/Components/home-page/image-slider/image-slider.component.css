@@ -1,8 +1,8 @@
 .image-slider {
   position: relative;
-  height: calc(100vh - 100px); /* Ocupa o resto da viewport abaixo do header */
-  width: 100%; /* Ocupa toda a largura */
-  overflow: hidden; /* Garante que o conteúdo extra não apareça */
+  height: calc(100vh - 100px);
+  width: 100%;
+  overflow: hidden;
 }
 
 .image-slider img {
@@ -11,6 +11,36 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ajusta a imagem para cobrir toda a área */
-  z-index: -1; /* Fica atrás do header */
+  object-fit: cover;
+  z-index: -1;
+}
+
+.image-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+}
+
+.image-selector .image-number,
+.image-selector .arrow {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.image-selector .image-number.active {
+  font-weight: bold;
+  font-size: 20px;
+  color: #885740;
+}
+
+.image-selector .page-number:hover,
+.image-selector .arrow:hover {
+  font-weight: bold;
+}
+
+.image-selector .arrow {
+  font-size: 30px;
 }

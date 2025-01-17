@@ -1,5 +1,17 @@
 <div class="image-slider">
-  <img src="assets/images/home1.png" alt="Imagem de Exemplo" />
+  <img [src]=images[currentImage] alt="Imagem de Exemplo" />
+</div>
+<div class="image-selector">
+  <span class="arrow left" (click)="prevImage()">&lt;</span>
+  <span
+    *ngFor="let image of images; let i = index"
+    class="image-number"
+    [class.active]="imageIdForCSS === i + 1"
+    (click)="goToImage(i + 1)"
+  >
+      {{ i + 1 }}
+    </span>
+  <span class="arrow right" (click)="nextImage()">&gt;</span>
 </div>
 
 
