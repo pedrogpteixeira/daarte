@@ -1,6 +1,6 @@
 .image-slider {
   position: relative;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 70px);
   width: 100%;
   overflow: hidden;
 }
@@ -21,7 +21,7 @@
   align-items: center;
   margin-top: 5px;
   font-family: Montserrat, sans-serif;
-  font-size: 18px;
+  font-size: 12px;
 }
 
 .image-selector .image-number,
@@ -32,8 +32,7 @@
 
 .image-selector .image-number.active {
   font-weight: bold;
-  font-size: 20px;
-  color: #885740;
+  font-size: 14px;
 }
 
 .image-selector .page-number:hover,
@@ -42,5 +41,5 @@
 }
 
 .image-selector .arrow {
-  font-size: 30px;
+  font-size: 12px;
 }

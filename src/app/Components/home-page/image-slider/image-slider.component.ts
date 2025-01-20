@@ -62,7 +62,7 @@ export class ImageSliderComponent implements OnInit, OnDestroy {
   startAutoSlide(): void {
     this.intervalId = setInterval(() => {
       this.nextImage();
-    }, 5000);
+    }, 10000);
   }
 
   stopAutoSlide(): void {
