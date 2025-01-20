@@ -1,0 +1,19 @@
+div .top-bar {
+  position: fixed; /* Fixa no topo da página */
+  top: 0;
+  width: 100%;
+}
+
+.header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
+.header.scrolled {
+  top: 0;
+}
+
+.hover-background {
+  background-color: #885740; /* Cor do hover */
+}

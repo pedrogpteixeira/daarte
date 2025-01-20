@@ -1,0 +1,31 @@
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  text-align: center; /* Centraliza o texto */
+  margin: 100px auto; /* Adiciona margem automática e centraliza no eixo horizontal */
+  width: 90%; /* Ocupa 90% da largura do componente */
+  max-width: 800px; /* Limita a largura máxima */
+  padding: 20px;
+}
+
+.popup-container h1 {
+  font-size: 2rem; /* Tamanho do título */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+  color: #444; /* Cor do texto */
+}
+
+.popup-container p {
+  font-size: 1rem; /* Tamanho do texto */
+  line-height: 1.5; /* Espaçamento entre linhas */
+  margin: 10px 0; /* Margem vertical entre os parágrafos */
+  color: #666; /* Cor do texto */
+}
+
+.popup-container hr {
+  width: 100%; /* Largura da linha */
+  margin: 20px auto; /* Margem ao redor da linha */
+  border: 0;
+  border-top: 1px solid #ddd; /* Linha leve e discreta */
+}
