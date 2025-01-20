@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-top-bar',
@@ -7,9 +7,43 @@ import {Component, OnInit} from '@angular/core';
   templateUrl: './top-bar.component.html',
   styleUrl: './top-bar.component.css'
 })
-export class TopBarComponent implements OnInit{
+export class TopBarComponent implements OnInit, OnDestroy{
 
-    ngOnInit(): void {
+  quotes: string[] = [];
+  currentQuote = 0;
+  intervalId!: any;
+
+  ngOnInit(): void {
+    this.quotes = [
+      'obrigada por comprar handmade',
+      'envio grátis para portugal acima de 50€'
+    ];
+
+    this.startAutoSlide();
+  }
+
+  ngOnDestroy(): void {
+    this.stopAutoSlide();
+  }
+
+  nextQuote(): void {
+    if (this.currentQuote < this.quotes.length - 1) {
+      this.currentQuote++;
+    } else {
+      this.currentQuote = 0;
     }
+  }
+
+  startAutoSlide(): void {
+    this.intervalId = setInterval(() => {
+      this.nextQuote();
+    }, 7000);
+  }
+
+  stopAutoSlide(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
 
 }

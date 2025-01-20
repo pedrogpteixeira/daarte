@@ -29,7 +29,7 @@
 
 .header-images {
   margin-left: auto; /* Empurra o container de imagens para a direita */
-  margin-right: 40px; /* Espaçamento à direita */
+  margin-right: 3%; /* Espaçamento à direita */
   display: flex; /* Organiza as imagens em linha */
   gap: 20px; /* Espaçamento entre as imagens */
 }

@@ -7,7 +7,7 @@ div .top-bar{
 
 .header {
   position: fixed;
-  z-index: 1000; /* Fica acima do header */
+  z-index: 1000;
   width: 100%;
 }
 
