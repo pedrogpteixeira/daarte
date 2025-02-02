@@ -1,0 +1,14 @@
+<div class="products-grid">
+  <div class="product" *ngFor="let image of productImages">
+    <div class="image-container">
+      <img
+        [src]="image.src"
+        [alt]="image.name"
+        (mouseover)="changeImage($event.target, image.src2)"
+        (mouseout)="changeImage($event.target, image.src)"
+        [routerLink]="image.goto"
+      >
+      <span class="image-text" [routerLink]="image.goto">{{ image.name }}</span>
+    </div>
+  </div>
+</div>
