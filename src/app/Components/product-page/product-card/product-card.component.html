@@ -1,6 +1,9 @@
 <div class="product-card">
   <div class="image-container">
-    <img [src]="product.image" [alt]="product.name" class="product-image" />
+    <img [src]="product.image" [alt]="product.name" class="product-image"
+         (mouseover)="changeImage($event.target, product.image2)"
+         (mouseout)="changeImage($event.target, product.image)"
+         [routerLink]="product.goto"/>
   </div>
   <div class="product-info">
     <h3 class="product-name">{{ product.name }}</h3>

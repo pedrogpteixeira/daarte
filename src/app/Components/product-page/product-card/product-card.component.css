@@ -8,12 +8,14 @@
 .product-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .image-container {
   width: 100%;
   aspect-ratio: 1/1;
   overflow: hidden;
+
 }
 
 .product-image {
