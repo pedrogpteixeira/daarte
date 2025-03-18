@@ -1,34 +1,32 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {ProductService} from "../../services/product.service";
-import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule} from "@angular/forms";
 import {ProductCardComponent} from "./product-card/product-card.component";
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-product-page',
   standalone: true,
   imports: [
-    NgIf,
-    NgClass,
+    CommonModule,
     FormsModule,
-    NgForOf,
-    ProductCardComponent
+    ProductCardComponent,
+    MatIconModule,
   ],
   templateUrl: './product-page.component.html',
   styleUrl: './product-page.component.css'
 })
 export class ProductPageComponent {
-  productImages: string[] = [
+  productImages = [
     "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     "https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
     "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80",
     "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80",
   ];
 
-  currentImageIndex: number = 0;
-  quantity: number = 1;
-  openSection: string | null = 'how';
+  currentImageIndex = 0;
+  quantity = 1;
+  openSection: string | null = "how";
 
   similarProducts = [
     {
@@ -53,6 +51,14 @@ export class ProductPageComponent {
     },
   ];
 
+  nextImage() {
+    this.currentImageIndex = (this.currentImageIndex === this.productImages.length - 1) ? 0 : this.currentImageIndex + 1;
+  }
+
+  prevImage() {
+    this.currentImageIndex = (this.currentImageIndex === 0) ? this.productImages.length - 1 : this.currentImageIndex - 1;
+  }
+
   selectImage(index: number) {
     this.currentImageIndex = index;
   }
@@ -65,14 +71,14 @@ export class ProductPageComponent {
     this.quantity = Math.max(this.quantity - 1, 1);
   }
 
-  handleQuantityChange(event: any) {
-    const value = parseInt(event.target.value);
-    if (!isNaN(value) && value >= 1 && value <= 99) {
-      this.quantity = value;
+  handleQuantityChange(event: Event) {
+    const value = parseInt((event.target as HTMLInputElement).value, 10);
+    if (!isNaN(value)) {
+      this.quantity = Math.max(1, Math.min(value, 99));
     }
   }
 
   toggleSection(section: string) {
-    this.openSection = this.openSection === section ? null : section;
+    this.openSection = (this.openSection === section) ? null : section;
   }
 }
