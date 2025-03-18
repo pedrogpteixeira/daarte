@@ -1,0 +1,75 @@
+<div class="product-page">
+  <div class="product-page-container">
+    <div class="product-layout">
+      <div class="product-image-container">
+        <div class="product-image-wrapper">
+          <div class="product-image">
+            <img
+              [src]="productImages[currentImageIndex]"
+              alt="Product"
+            />
+          </div>
+        </div>
+        <div class="thumbnail-container">
+          <button
+            *ngFor="let image of productImages; let i = index"
+            (click)="selectImage(i)"
+            [ngClass]="{'border-blue-500': currentImageIndex === i, 'border-transparent': currentImageIndex !== i}"
+            class="thumbnail-button"
+          >
+            <img
+              [src]="image"
+              alt="Product thumbnail"
+            />
+          </button>
+        </div>
+      </div>
+      <div class="product-info">
+        <h1 class="product-title">Premium Running Shoes</h1>
+        <p class="product-price">$129.99</p>
+        <div class="quantity-control">
+          <span class="quantity-label">Quantity:</span>
+          <div class="quantity-input">
+            <button
+              (click)="decrementQuantity()"
+              class="quantity-button"
+              aria-label="Decrease quantity"
+            >
+              <i class="lucide lucide-minus"></i>
+            </button>
+            <input
+              type="number"
+              min="1"
+              max="99"
+              [(ngModel)]="quantity"
+              (ngModelChange)="handleQuantityChange($event)"
+              class="quantity-input-field"
+            />
+            <button
+              (click)="incrementQuantity()"
+              class="quantity-button"
+              aria-label="Increase quantity"
+            >
+              <i class="lucide lucide-plus"></i>
+            </button>
+          </div>
+        </div>
+        <p class="product-description">
+          Experience ultimate comfort and performance with our premium running shoes, designed for both professional
+          athletes and casual runners alike.
+        </p>
+        <div class="section-toggle-button">
+          <h2 class="section-toggle-button-title">How It's Made</h2>
+          <i [ngClass]="{'transform rotate-180': openSection === 'how'}" class="lucide lucide-chevron-down"></i>
+        </div>
+        <button class="add-to-cart-button">
+          <i class="lucide lucide-shopping-cart"></i> Add to Cart
+        </button>
+      </div>
+    </div>
+    <div class="similar-products-title">You May Also Like</div>
+    <div class="similar-products-grid">
+      <app-product-card *ngFor="let product of similarProducts" [product]="product"></app-product-card>
+    </div>
+  </div>
+</div>

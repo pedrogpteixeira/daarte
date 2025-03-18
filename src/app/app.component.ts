@@ -18,10 +18,14 @@ export class AppComponent {
   isScrolled = false; // Estado para verificar o scroll
 
   isPopupsRoute = false;
+  isProductRoute = false;
 
   ngOnInit(): void {
     this.router.events.subscribe(() => {
       this.isPopupsRoute = this.router.url === '/popups';
+    });
+    this.router.events.subscribe(() => {
+      this.isProductRoute = this.router.url === '/product';
     });
   }
 
