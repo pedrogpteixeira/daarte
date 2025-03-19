@@ -1,0 +1,69 @@
+<div class="product-listing-page">
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1 class="title">Shop All Products</h1>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="content-wrapper">
+      <!-- Filter Sidebar -->
+      <app-filter-side-bar
+        [selectedCategory]="selectedCategory"
+        (selectedCategoryChange)="selectedCategory = $event; filterProducts()"
+        [priceRange]="priceRange"
+        (priceRangeChange)="priceRange = $event; filterProducts()"
+        [showNew]="showNew"
+        (showNewChange)="showNew = $event; filterProducts()"
+        [showSale]="showSale"
+        (showSaleChange)="showSale = $event; filterProducts()"
+        [showInStock]="showInStock"
+        (showInStockChange)="showInStock = $event; filterProducts()"
+        [showOutOfStock]="showOutOfStock"
+        (showOutOfStockChange)="showOutOfStock = $event; filterProducts()"
+        [isMobileFilterOpen]="isMobileFilterOpen"
+        (isMobileFilterOpenChange)="isMobileFilterOpen = $event"
+      ></app-filter-side-bar>
+
+      <!-- Product Grid and Pagination -->
+      <div class="product-section">
+        <!-- Sorting and Product Count -->
+        <div class="sorting-container">
+          <p class="product-count">
+            Showing {{ currentPage * productsPerPage > filteredProducts.length ? filteredProducts.length : currentPage * productsPerPage }}
+            of {{ filteredProducts.length }} products
+          </p>
+          <div class="sort-dropdown">
+            <select
+              [(ngModel)]="sortBy"
+              (change)="filterProducts()"
+              class="sort-select"
+            >
+              <option value="featured">Sort by: Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="newest">Newest First</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Product Grid -->
+        <app-product-grid [products]="visibleProducts" [loading]="loading"></app-product-grid>
+
+        <!-- Pagination -->
+        <div *ngIf="totalPages > 1" class="pagination">
+          <button
+            *ngFor="let page of getPagesArray()"
+            (click)="handlePageChange(page)"
+            [class.active]="currentPage === page"
+            class="page-button"
+          >
+            {{ page }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

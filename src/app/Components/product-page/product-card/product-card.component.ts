@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {RouterLink} from "@angular/router";
+import {Product} from "../../../../utils/mockData";
 
 @Component({
   selector: 'app-product-card',
@@ -11,13 +12,15 @@ import {RouterLink} from "@angular/router";
   styleUrl: './product-card.component.css'
 })
 export class ProductCardComponent {
-  @Input() product: { name: string, price: string, image: string, image2: string, goto: string } = {
-    name: '',
-    price: '',
-    image: '',
-    image2: '',
-    goto: ''
-  };
+  @Input() product: Product = {
+    id: "",
+    name: "",
+    price: 0,
+    category: "",
+    mainImage: "",
+    hoverImage: "",
+    inStock: false,
+  }
 
   changeImage(image: any, src: string) {
     image.src = src;

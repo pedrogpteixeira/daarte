@@ -1,0 +1,15 @@
+<!-- Loading State -->
+<div *ngIf="loading" class="product-grid loading">
+  <div *ngFor="let item of [1, 2, 3, 4, 5, 6]" class="product-skeleton"></div>
+</div>
+
+<!-- No Products Found -->
+<div *ngIf="!loading && products.length === 0" class="no-products">
+  <p class="no-products-text">No products match your current filters.</p>
+  <p class="no-products-text">Try adjusting your selection.</p>
+</div>
+
+<!-- Product Grid -->
+<div *ngIf="!loading && products.length > 0" class="product-grid">
+  <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+</div>

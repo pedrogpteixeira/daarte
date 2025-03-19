@@ -1,4 +1,4 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Router, RouterOutlet} from '@angular/router';
 import {TopBarComponent} from "./Components/home-page/top-bar/top-bar.component";
 import {FooterComponent} from "./Components/home-page/footer/footer.component";
@@ -12,12 +12,13 @@ import {NgClass} from "@angular/common";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'da arte';
 
   isScrolled = false; // Estado para verificar o scroll
 
   isPopupsRoute = false;
+  isStoreRoute = false;
   isProductRoute = false;
 
   ngOnInit(): void {
@@ -26,6 +27,9 @@ export class AppComponent {
     });
     this.router.events.subscribe(() => {
       this.isProductRoute = this.router.url === '/product';
+    });
+    this.router.events.subscribe(() => {
+      this.isStoreRoute = this.router.url === '/store';
     });
   }
 

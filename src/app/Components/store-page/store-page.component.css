@@ -1,0 +1,115 @@
+/* General Styles */
+.product-listing-page {
+  min-height: 100vh;
+  background-color: white;
+  margin-top: 6rem;
+  font-family: Montserrat, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.header {
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 20px 0;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Main Content */
+.main-content {
+  padding: 20px; /* Add padding */
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto; /* Center the content */
+}
+
+@media (min-width: 768px) {
+  .content-wrapper {
+    flex-direction: row;
+  }
+}
+
+/* Product Section */
+.product-section {
+  flex: 1;
+  padding: 10px; /* Add padding */
+}
+
+.sorting-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px;
+}
+
+.product-count {
+  font-size: 14px;
+  color: #666;
+}
+
+.sort-dropdown {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .sort-dropdown {
+    display: block;
+  }
+}
+
+.sort-select {
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.page-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.page-button:hover {
+  background-color: #f0f0f0;
+}
+
+.page-button.active {
+  background-color: #885740;
+  color: white;
+  border-color: #885740;
+}

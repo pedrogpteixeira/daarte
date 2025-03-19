@@ -1,0 +1,51 @@
+/* Product Grid Container */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* 1 column by default */
+  gap: 20px; /* Spacing between items */
+  padding: 20px; /* Add padding to the grid */
+}
+
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens */
+  }
+}
+
+/* Loading State */
+.product-grid.loading {
+  gap: 2rem;
+}
+
+.product-skeleton {
+  background-color: #f3f4f6; /* Light gray background */
+  border-radius: 0.5rem; /* Rounded corners */
+  aspect-ratio: 4 / 5; /* Aspect ratio for skeleton */
+  animation: pulse 1.5s infinite; /* Pulse animation */
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* No Products Found */
+.no-products {
+  padding: 3rem 0; /* Vertical padding */
+  text-align: center;
+}
+
+.no-products-text {
+  color: #6b7280; /* Gray text color */
+  margin: 0.5rem 0; /* Spacing between lines */
+}
