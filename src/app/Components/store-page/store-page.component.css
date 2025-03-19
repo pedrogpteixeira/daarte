@@ -87,29 +87,23 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 40px;
 }
 
-.page-button {
+.page-button , .arrow {
   width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: white;
-  color: #333;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.page-button:hover {
-  background-color: #f0f0f0;
+.arrow:hover, .page-button:hover {
+  font-weight: bold;
 }
 
 .page-button.active {
-  background-color: #885740;
-  color: white;
-  border-color: #885740;
+  font-weight: bolder;
+  font-size: 20px;
 }

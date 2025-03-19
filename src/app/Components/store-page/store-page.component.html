@@ -54,14 +54,16 @@
 
         <!-- Pagination -->
         <div *ngIf="totalPages > 1" class="pagination">
-          <button
+          <span class="arrow left" (click)="handlePreviousPage()">&lt;</span>
+          <span
             *ngFor="let page of getPagesArray()"
             (click)="handlePageChange(page)"
             [class.active]="currentPage === page"
             class="page-button"
           >
             {{ page }}
-          </button>
+          </span>
+          <span class="arrow right" (click)="handleNextPage()">&gt;</span>
         </div>
       </div>
     </div>

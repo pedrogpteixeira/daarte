@@ -105,6 +105,22 @@ export class StorePageComponent implements OnInit {
     setTimeout(() => (this.loading = false), 300);
   }
 
+  handlePreviousPage(): void {
+    if (this.currentPage > 1) {
+      this.handlePageChange(this.currentPage - 1);
+    } else {
+      this.handlePageChange(this.totalPages);
+    }
+  }
+
+  handleNextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.handlePageChange(this.currentPage + 1);
+    } else {
+      this.handlePageChange(1);
+    }
+  }
+
   // Get visible products for the current page
   get visibleProducts(): Product[] {
     const startIndex = (this.currentPage - 1) * this.productsPerPage;
