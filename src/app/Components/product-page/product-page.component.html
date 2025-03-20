@@ -4,13 +4,14 @@
       <!-- Product Images -->
       <div class="product-images">
         <div class="image-container">
-          <img [src]="productImages[currentImageIndex]" alt="Product" class="main-image" />
-          <button (click)="prevImage()" class="nav-button prev-button" aria-label="Previous image">
-            <mat-icon>chevron_left</mat-icon>
-          </button>
-          <button (click)="nextImage()" class="nav-button next-button" aria-label="Next image">
-            <mat-icon>chevron_right</mat-icon>
-          </button>
+          <img
+            [src]="productImages[currentImageIndex]"
+            alt="Product"
+            class="main-image"
+            (load)="onImageLoad()"
+            [class.loaded]="isImageLoaded"
+          />
+          <div *ngIf="!isImageLoaded" class="image-loading">Loading...</div>
         </div>
         <div class="thumbnail-container">
           <button

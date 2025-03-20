@@ -23,16 +23,9 @@ export class ProductPageComponent {
   currentImageIndex = 0;
   quantity = 1;
   openSection: string | null = "how";
+  isImageLoaded = false;
 
   similarProducts: Product[] = similarProducts;
-
-  nextImage() {
-    this.currentImageIndex = (this.currentImageIndex === this.productImages.length - 1) ? 0 : this.currentImageIndex + 1;
-  }
-
-  prevImage() {
-    this.currentImageIndex = (this.currentImageIndex === 0) ? this.productImages.length - 1 : this.currentImageIndex - 1;
-  }
 
   selectImage(index: number) {
     this.currentImageIndex = index;
@@ -55,5 +48,9 @@ export class ProductPageComponent {
 
   toggleSection(section: string) {
     this.openSection = (this.openSection === section) ? null : section;
+  }
+
+  onImageLoad() {
+    this.isImageLoaded = true;
   }
 }
