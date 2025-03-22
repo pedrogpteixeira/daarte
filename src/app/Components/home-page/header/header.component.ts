@@ -10,9 +10,15 @@ import {RouterLink} from "@angular/router";
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
 
-    ngOnInit(): void {
-    }
+  isMenuOpen = false;
+
+  ngOnInit(): void {
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 
 }

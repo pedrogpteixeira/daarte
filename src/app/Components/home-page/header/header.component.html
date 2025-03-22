@@ -1,60 +1,30 @@
 <div class="header">
+  <!-- Botão de menu (visível apenas em mobile) -->
+  <button class="menu-button" (click)="toggleMenu()">
+    <img src="/assets/images/menu-icon.png" alt="Menu"/>
+  </button>
+
+  <!-- Menu de opções (visível em desktop) -->
   <div class="header-options">
     <a routerLink="/store">loja</a>
     <a routerLink="/faq">faq</a>
     <a routerLink="/popups">mercados</a>
   </div>
+
+  <!-- Logo central -->
   <p routerLink="/home">da arte.</p>
+
+  <!-- Ícones do lado direito -->
   <div class="header-images">
     <img src="/assets/images/glass.png" alt="Icon 1"/>
     <img routerLink="/user" src="/assets/images/user.png" alt="Icon 2"/>
     <img routerLink="/cart" src="/assets/images/cart.png" alt="Icon 3"/>
   </div>
+
+  <!-- Menu flutuante (visível apenas em mobile) -->
+  <div class="floating-menu" [class.active]="isMenuOpen">
+    <a routerLink="/store">loja</a>
+    <a routerLink="/faq">faq</a>
+    <a routerLink="/popups">mercados</a>
+  </div>
 </div>
-
-<!--
-<header>
-  <div class="logo">
-    <a routerLink="/home">
-      <img src="assets/images/daarte_logo-transp_500x500.png" alt="Logo da Loja">
-    </a>
-  </div>
-
-  <ul id="nav">
-    <li><a routerLink="/ilustrations">Ilustrações</a></li>
-    <li class="dropdown">
-      <a href="#">Crochet</a>
-      <div class="dropdown-content">
-        <a routerLink="/crochet-option1">Opção 1</a>
-        <br>
-        <a routerLink="/crochet-option2">Opção 2</a>
-        -->
-<!-- Adicione mais opções conforme necessário -->
-<!--
-      </div>
-    </li>
-    <li class="dropdown">
-      <a href="#">Acessórios</a>
-      <div class="dropdown-content">
-        <a routerLink="/accessories-option1">Opção 1</a>
-        <br>
-        <a routerLink="/accessories-option2">Opção 2</a>
-        -->
-<!-- Adicione mais opções conforme necessário -->
-<!--
-      </div>
-    </li>
-  </ul>
-
-  <div class="right">
-    <a routerLink="/cart">
-      <img src="assets/images/cart.png" alt="Cart image">
-    </a>
-    <a routerLink="/user">
-      <img src="assets/images/user.png" alt="User image">
-    </a>
-  </div>
-
-</header>
--->
-

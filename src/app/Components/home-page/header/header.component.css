@@ -1,66 +1,123 @@
 /* Header */
 .header {
-  top: 0; /* Sempre no topo da viewport */
-  height: 80px; /* Altura do header */
-  display: flex; /* Usa Flexbox para organizar os elementos */
-  align-items: center; /* Alinha verticalmente os itens no centro */
-  background-color: transparent; /* Transparente inicialmente */
-  transition: background-color 0.5s ease; /* Suaviza a transição de cor */
+  top: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  transition: background-color 0.5s ease;
+  position: relative; /* Para posicionar o menu flutuante */
 }
 
 .header:hover {
-  background-color: #885740; /* Cor ao passar o mouse */
+  background-color: #885740;
 }
 
 .header p {
-  position: absolute; /* Centraliza independente do flexbox */
-  left: 50%; /* Move o centro horizontal */
-  transform: translateX(-50%); /* Garante alinhamento central */
-  margin: 0; /* Remove margens padrão */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
   font-family: "Yeseva One", sans-serif;
-  font-size: 31px; /* Ajuste o tamanho da fonte */
-  color: white; /* Cor do texto */
-  text-align: center; /* Centraliza o texto */
+  font-size: 31px;
+  color: white;
+  text-align: center;
   cursor: pointer;
   letter-spacing: -1.5px;
 }
 
 .header-images {
-  margin-left: auto; /* Empurra o container de imagens para a direita */
-  margin-right: 3%; /* Espaçamento à direita */
-  display: flex; /* Organiza as imagens em linha */
-  gap: 20px; /* Espaçamento entre as imagens */
+  margin-left: auto;
+  margin-right: 3%;
+  display: flex;
+  gap: 20px;
 }
 
 .header-options {
-  margin-right: auto; /* Empurra o container de imagens para a direita */
-  margin-left: 3%; /* Espaçamento à direita */
-  display: flex; /* Organiza as imagens em linha */
-  gap: 20px; /* Espaçamento entre as imagens */
+  margin-right: auto;
+  margin-left: 3%;
+  display: flex;
+  gap: 20px;
 }
 
 .header-images img {
-  width: 20px; /* Tamanho das imagens */
-  height: auto; /* Mantém a proporção */
-  cursor: pointer; /* Indica interatividade */
-  transition: transform 0.2s ease; /* Efeito suave no hover */
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .header-images img:hover {
-  transform: scale(1.1); /* Leve zoom ao passar o mouse */
+  transform: scale(1.1);
 }
 
 .header-options a {
-  font-family: Montserrat, sans-serif; /* Fonte do texto */
+  font-family: Montserrat, sans-serif;
   font-size: 14px;
-  width: 20px; /* Tamanho das imagens */
-  height: auto; /* Mantém a proporção */
-  cursor: pointer; /* Indica interatividade */
-  transition: transform 0.2s ease; /* Efeito suave no hover */
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
   text-decoration: none;
   color: white;
 }
 
 .header-options a:hover {
   text-decoration: underline;
+}
+
+/* Botão de menu (visível apenas em mobile) */
+.menu-button {
+  display: none; /* Escondido por padrão */
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 3%;
+}
+
+.menu-button img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Menu flutuante (visível apenas em mobile) */
+.floating-menu {
+  display: none; /* Escondido por padrão */
+  flex-direction: column;
+  position: absolute;
+  top: 80px; /* Abaixo do header */
+  left: 0;
+  width: 100%;
+  background-color: #885740;
+  z-index: 1000;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.floating-menu.active {
+  display: flex; /* Exibe o menu quando ativo */
+}
+
+.floating-menu a {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.floating-menu a:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header-options {
+    display: none; /* Esconde o menu de opções em mobile */
+  }
+
+  .menu-button {
+    display: block; /* Exibe o botão de menu em mobile */
+  }
 }
