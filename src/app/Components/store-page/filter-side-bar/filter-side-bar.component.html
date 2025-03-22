@@ -41,29 +41,6 @@
       />
     </div>
 
-    <!-- Product Status -->
-    <div class="filter-section">
-      <h3 class="filter-title">Product Status</h3>
-      <div class="filter-options">
-        <label class="filter-option">
-          <input
-            type="checkbox"
-            [checked]="showNew"
-            (change)="showNewChange.emit(!showNew)"
-          />
-          New Arrivals
-        </label>
-        <label class="filter-option">
-          <input
-            type="checkbox"
-            [checked]="showSale"
-            (change)="showSaleChange.emit(!showSale)"
-          />
-          On Sale
-        </label>
-      </div>
-    </div>
-
     <!-- Availability -->
     <div class="filter-section">
       <h3 class="filter-title">Availability</h3>
@@ -145,29 +122,6 @@
           (input)="handlePriceChange($event, 1)"
           class="range-input"
         />
-      </div>
-
-      <!-- Product Status -->
-      <div class="filter-section">
-        <h3 class="filter-title">Product Status</h3>
-        <div class="filter-options">
-          <label class="filter-option">
-            <input
-              type="checkbox"
-              [checked]="showNew"
-              (change)="showNewChange.emit(!showNew)"
-            />
-            New Arrivals
-          </label>
-          <label class="filter-option">
-            <input
-              type="checkbox"
-              [checked]="showSale"
-              (change)="showSaleChange.emit(!showSale)"
-            />
-            On Sale
-          </label>
-        </div>
       </div>
 
       <!-- Availability -->

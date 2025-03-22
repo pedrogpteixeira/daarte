@@ -47,7 +47,7 @@
 /* Product Section */
 .product-section {
   flex: 1;
-  padding: 10px; /* Add padding */
+  padding: 10px 0; /* Add padding */
 }
 
 .sorting-container {
@@ -67,6 +67,10 @@
   display: none;
 }
 
+.sort-options {
+  font-family: Montserrat, sans-serif;
+}
+
 @media (min-width: 768px) {
   .sort-dropdown {
     display: block;
@@ -80,6 +84,7 @@
   border-radius: 4px;
   background-color: white;
   cursor: pointer;
+  font-family: Montserrat, sans-serif;
 }
 
 /* Pagination */

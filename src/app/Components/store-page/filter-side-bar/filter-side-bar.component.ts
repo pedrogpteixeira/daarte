@@ -19,12 +19,6 @@ export class FilterSideBarComponent {
   @Input() priceRange: [number, number] = [0, 200];
   @Output() priceRangeChange = new EventEmitter<[number, number]>();
 
-  @Input() showNew: boolean = false;
-  @Output() showNewChange = new EventEmitter<boolean>();
-
-  @Input() showSale: boolean = false;
-  @Output() showSaleChange = new EventEmitter<boolean>();
-
   @Input() showInStock: boolean = false;
   @Output() showInStockChange = new EventEmitter<boolean>();
 

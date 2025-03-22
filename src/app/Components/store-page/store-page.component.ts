@@ -30,7 +30,7 @@ export class StorePageComponent implements OnInit {
   currentPage: number = 1;
   loading: boolean = false;
   isMobileFilterOpen: boolean = false;
-  productsPerPage: number = 6;
+  productsPerPage: number = 9;
   totalPages: number = 0;
 
   ngOnInit(): void {

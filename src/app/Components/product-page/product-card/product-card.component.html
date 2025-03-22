@@ -5,8 +5,8 @@
          (mouseout)="changeImage($event.target, product.mainImage)"
          routerLink="/product"/>
   </div>
-  <div class="product-info">
-    <h3 class="product-name">{{ product.name }}</h3>
-    <p class="product-price">{{ product.price }}</p>
+  <div class="product-info" routerLink="/product">
+    <a class="product-name">{{ product.name }}</a>
+    <a class="product-price">{{ product.price }}</a>
   </div>
 </div>
