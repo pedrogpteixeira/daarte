@@ -20,60 +20,64 @@
             [class.active]="currentImageIndex === i"
             class="thumbnail"
           >
-            <img [src]="image" [alt]="'Product thumbnail ' + (i + 1)" class="thumbnail-image" />
+            <img [src]="image" [alt]="'Product thumbnail ' + (i + 1)" class="thumbnail-image"/>
           </button>
         </div>
       </div>
 
       <!-- Product Details -->
       <div class="product-details">
-        <h1 class="product-title">Premium Running Shoes</h1>
-        <p class="product-price">$129.99</p>
+        <div class="product-details-container">
+          <h1 class="product-title">Premium Running Shoes</h1>
+          <p class="product-price">$129.99</p>
 
-        <!-- Quantity Selector -->
-        <div class="quantity-selector">
-          <span class="quantity-label">Quantity:</span>
-          <div class="quantity-control">
-            <button (click)="decrementQuantity()" class="quantity-button" aria-label="Decrease quantity">
-              <mat-icon>remove</mat-icon>
-            </button>
-            <input
-              type="number"
-              min="1"
-              max="99"
-              [value]="quantity"
-              (change)="handleQuantityChange($event)"
-              class="quantity-input"
-            />
-            <button (click)="incrementQuantity()" class="quantity-button" aria-label="Increase quantity">
-              <mat-icon>add</mat-icon>
-            </button>
-          </div>
-        </div>
-
-        <!-- Product Description -->
-        <p class="product-description">
-          Experience ultimate comfort and performance with our premium running shoes, designed for both professional athletes and casual runners alike.
-        </p>
-
-        <!-- Accordion Sections -->
-        <div class="accordion">
-          <div *ngFor="let section of ['how', 'where', 'why']" class="accordion-item">
-            <button (click)="toggleSection(section)" class="accordion-header">
-              <h2>{{ section | titlecase }} It's Made</h2>
-              <mat-icon [class.rotated]="openSection === section">expand_more</mat-icon>
-            </button>
-            <div *ngIf="openSection === section" class="accordion-content">
-              <p>Content for {{ section }} section...</p>
+          <!-- Quantity Selector -->
+          <div class="quantity-selector">
+            <span class="quantity-label">Quantity:</span>
+            <div class="quantity-control">
+              <button (click)="decrementQuantity()" class="quantity-button" aria-label="Decrease quantity">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <input
+                type="number"
+                min="1"
+                max="99"
+                [value]="quantity"
+                (change)="handleQuantityChange($event)"
+                class="quantity-input"
+              />
+              <button (click)="incrementQuantity()" class="quantity-button" aria-label="Increase quantity">
+                <mat-icon>add</mat-icon>
+              </button>
             </div>
           </div>
-        </div>
 
-        <!-- Add to Cart Button -->
-        <button class="add-to-cart-button">
-          <mat-icon>shopping_cart</mat-icon>
-          Add to Cart
-        </button>
+          <!-- Product Description -->
+          <p class="product-description">
+            Experience ultimate comfort and performance with our premium running shoes, designed for both professional
+            athletes and casual runners alike.
+          </p>
+
+          <!-- Accordion Sections -->
+          <div class="accordion">
+            <div *ngFor="let section of ['how', 'where', 'why']" class="accordion-item"
+                 [id]="'accordion-item-' + section">
+              <button (click)="toggleSection(section)" class="accordion-header">
+                <h2>{{ section }} it's made</h2>
+                <mat-icon [class.rotated]="openSection === section">expand_more</mat-icon>
+              </button>
+              <div *ngIf="openSection === section" class="accordion-content">
+                <p>Content for {{ section }} section...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add to Cart Button -->
+          <button class="add-to-cart-button">
+            <mat-icon>shopping_cart</mat-icon>
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
 
