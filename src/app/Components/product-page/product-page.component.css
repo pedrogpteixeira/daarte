@@ -28,7 +28,7 @@
 
 /* Product Images */
 .product-images {
-  flex: 0.6; /* 60% width */
+  flex: 0.55; /* 60% width */
 }
 
 .image-container {
@@ -82,7 +82,7 @@
 
 /* Product Details */
 .product-details {
-  flex: 0.4; /* 40% width */
+  flex: 0.45; /* 40% width */
   font-family: Montserrat, sans-serif;
   padding: 2rem;
 }
