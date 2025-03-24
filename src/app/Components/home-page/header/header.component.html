@@ -1,7 +1,7 @@
 <div class="header">
   <!-- Botão de menu (visível apenas em mobile) -->
   <button class="menu-button" (click)="toggleMenu()">
-    <img src="/assets/images/menu-icon.png" alt="Menu"/>
+    <img src="/assets/images/hamburguer.png" alt="Menu"/>
   </button>
 
   <!-- Menu de opções (visível em desktop) -->
@@ -23,8 +23,8 @@
 
   <!-- Menu flutuante (visível apenas em mobile) -->
   <div class="floating-menu" [class.active]="isMenuOpen">
-    <a routerLink="/store">loja</a>
-    <a routerLink="/faq">faq</a>
-    <a routerLink="/popups">mercados</a>
+    <a routerLink="/store" (click)="toggleMenu()">loja</a>
+    <a routerLink="/faq" (click)="toggleMenu()">faq</a>
+    <a routerLink="/popups" (click)="toggleMenu()">mercados</a>
   </div>
 </div>
