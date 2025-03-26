@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Product, products} from "../../../utils/mockData";
 import {ProductGridComponent} from "./product-grid/product-grid.component";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf, TitleCasePipe} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {FilterSideBarComponent} from "./filter-side-bar/filter-side-bar.component";
 import {ActivatedRoute} from '@angular/router';
+import {pipe} from "rxjs";
 
 @Component({
   selector: 'app-store-page',
@@ -14,7 +15,8 @@ import {ActivatedRoute} from '@angular/router';
     NgForOf,
     FormsModule,
     FilterSideBarComponent,
-    NgIf
+    NgIf,
+    TitleCasePipe
   ],
   templateUrl: './store-page.component.html',
   styleUrl: './store-page.component.css'
@@ -141,4 +143,6 @@ export class StorePageComponent implements OnInit {
   getPagesArray(): number[] {
     return Array.from({length: this.totalPages}, (_, i) => i + 1);
   }
+
+  protected readonly pipe = pipe;
 }

@@ -1,0 +1,88 @@
+<div class="register-container">
+  <div class="register-card">
+    <h2 class="register-title">Create your account</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      <div class="name-fields">
+        <mat-form-field appearance="outline" class="name-field">
+          <mat-label>First name</mat-label>
+          <input matInput formControlName="firstName" id="firstName">
+          <mat-error *ngIf="firstName?.errors?.['required']">
+            First name is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="name-field">
+          <mat-label>Last name</mat-label>
+          <input matInput formControlName="lastName" id="lastName">
+          <mat-error *ngIf="lastName?.errors?.['required']">
+            Last name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email address</mat-label>
+        <input matInput formControlName="email" type="email" id="email">
+        <mat-error *ngIf="email?.errors?.['required']">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="email?.errors?.['email']">
+          Email is invalid
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="showPassword ? 'text' : 'password'"
+               formControlName="password" id="password">
+        <button mat-icon-button matSuffix (click)="showPassword = !showPassword" type="button">
+          <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="password?.errors?.['required']">
+          Password is required
+        </mat-error>
+        <mat-error *ngIf="password?.errors?.['minlength']">
+          Password must be at least 8 characters
+        </mat-error>
+        <mat-error *ngIf="password?.errors?.['pattern']">
+          Password must contain uppercase, lowercase and number
+        </mat-error>
+      </mat-form-field>
+
+      <div class="password-requirements">
+        <ul>
+          <li [class.requirement-met]="passwordChecks.minLength">
+            {{ passwordChecks.minLength ? '✓' : '•' }} At least 8 characters
+          </li>
+          <li [class.requirement-met]="passwordChecks.hasUpperCase">
+            {{ passwordChecks.hasUpperCase ? '✓' : '•' }} One uppercase letter
+          </li>
+          <li [class.requirement-met]="passwordChecks.hasLowerCase">
+            {{ passwordChecks.hasLowerCase ? '✓' : '•' }} One lowercase letter
+          </li>
+          <li [class.requirement-met]="passwordChecks.hasNumber">
+            {{ passwordChecks.hasNumber ? '✓' : '•' }} One number
+          </li>
+        </ul>
+      </div>
+
+      <mat-checkbox formControlName="acceptTerms" id="terms" class="terms-checkbox">
+        I agree to the
+        <a routerLink="/terms" class="link">Terms of Service</a> and
+        <a routerLink="/privacy" class="link">Privacy Policy</a>
+      </mat-checkbox>
+      <mat-error *ngIf="acceptTerms?.errors?.['required']" class="terms-error">
+        You must accept the terms and conditions
+      </mat-error>
+
+      <button mat-raised-button color="primary" type="submit" class="submit-button">
+        Create account
+      </button>
+    </form>
+
+    <p class="login-link">
+      Already have an account? <a routerLink="/login" class="link">Sign in</a>
+    </p>
+  </div>
+</div>
