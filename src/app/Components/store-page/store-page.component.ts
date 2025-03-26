@@ -4,6 +4,7 @@ import {ProductGridComponent} from "./product-grid/product-grid.component";
 import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {FilterSideBarComponent} from "./filter-side-bar/filter-side-bar.component";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-store-page',
@@ -33,7 +34,13 @@ export class StorePageComponent implements OnInit {
   productsPerPage: number = 9;
   totalPages: number = 0;
 
+  constructor(private route: ActivatedRoute) {
+  }
+
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.selectedCategory = params['category'] || 'all';
+    });
     this.filterProducts();
   }
 
@@ -42,8 +49,10 @@ export class StorePageComponent implements OnInit {
     let filtered = [...products];
 
     // Filter by category
-    if (this.selectedCategory !== 'All') {
-      filtered = filtered.filter((p) => p.category === this.selectedCategory);
+    if (this.selectedCategory !== 'all' && this.selectedCategory !== 'All') {
+      filtered = filtered.filter((p) =>
+        p.category.toLowerCase() === this.selectedCategory.toLowerCase()
+      );
     }
 
     // Filter by price range

@@ -6,7 +6,7 @@
 
   <!-- Menu de opções (visível em desktop) -->
   <div class="header-options">
-    <a routerLink="/store">loja</a>
+    <a routerLink="/store/all">loja</a>
     <a routerLink="/faq">faq</a>
     <a routerLink="/popups">mercados</a>
   </div>
@@ -23,7 +23,7 @@
 
   <!-- Menu flutuante (visível apenas em mobile) -->
   <div class="floating-menu" [class.active]="isMenuOpen">
-    <a routerLink="/store" (click)="toggleMenu()">loja</a>
+    <a routerLink="/store/all" (click)="toggleMenu()">loja</a>
     <a routerLink="/faq" (click)="toggleMenu()">faq</a>
     <a routerLink="/popups" (click)="toggleMenu()">mercados</a>
   </div>

@@ -10,7 +10,7 @@
 .product {
   width: calc(25% - 2rem); /* 4 itens por linha (considerando gap) */
   aspect-ratio: 3 / 4;
-  /* Restante dos estilos... */
+  cursor: pointer;
 }
 
 /* 2 colunas em telas médias */

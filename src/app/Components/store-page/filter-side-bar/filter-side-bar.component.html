@@ -8,7 +8,7 @@
         <button
           *ngFor="let category of categories"
           (click)="handleCategoryChange(category)"
-          [class.active]="selectedCategory === category"
+          [class.active]="selectedCategory.toLowerCase() === category.toLowerCase()"
           class="filter-option"
         >
           {{ category }}

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {categories} from "../../../../utils/mockData";
 import {NgForOf, NgIf} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-filter-side-bar',
@@ -28,9 +29,14 @@ export class FilterSideBarComponent {
   @Input() isMobileFilterOpen: boolean = false;
   @Output() isMobileFilterOpenChange = new EventEmitter<boolean>();
 
+  constructor(private router: Router) {
+  }
+
   // Handle category change
   handleCategoryChange(category: string) {
     this.selectedCategory = category;
+    this.router.navigate(['/store', category.toLowerCase()]).then(r => {
+    });
     this.selectedCategoryChange.emit(category);
   }
 

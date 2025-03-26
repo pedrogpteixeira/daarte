@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
       this.isProductRoute = this.router.url === '/product';
     });
     this.router.events.subscribe(() => {
-      this.isStoreRoute = this.router.url === '/store';
+      this.isStoreRoute = this.router.url.startsWith('/store/');
     });
   }
 
