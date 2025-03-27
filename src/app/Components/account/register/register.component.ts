@@ -1,27 +1,16 @@
-import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatError, MatFormField} from "@angular/material/form-field";
-import {MatInput} from "@angular/material/input";
+import {Component} from "@angular/core";
 import {NgIf} from "@angular/common";
-import {MatButton, MatIconButton} from "@angular/material/button";
-import {MatIcon} from "@angular/material/icon";
-import {MatCheckbox} from "@angular/material/checkbox";
 import {RouterLink} from "@angular/router";
+
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [
-    MatFormField,
-    MatInput,
     ReactiveFormsModule,
     NgIf,
-    MatIconButton,
-    MatIcon,
-    MatCheckbox,
-    RouterLink,
-    MatError,
-    MatButton
+    RouterLink
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
@@ -29,6 +18,7 @@ import {RouterLink} from "@angular/router";
 export class RegisterComponent {
   showPassword = false;
   passwordChecks: any = {};
+  showErrors = false;
 
   registerForm: FormGroup = this.fb.group({
     firstName: ['', Validators.required],
@@ -37,9 +27,10 @@ export class RegisterComponent {
     password: ['', [
       Validators.required,
       Validators.minLength(8),
-      Validators.pattern(/[A-Z]/),
-      Validators.pattern(/[a-z]/),
-      Validators.pattern(/[0-9]/)
+      Validators.pattern(/[A-Z]/),       // Pelo menos 1 letra maiúscula
+      Validators.pattern(/[a-z]/),       // Pelo menos 1 letra minúscula
+      Validators.pattern(/[0-9]/),       // Pelo menos 1 número
+      Validators.pattern(/[!@#$%^&*(),.?":{}|<>]/)  // Pelo menos 1 caractere especial
     ]],
     acceptTerms: [false, Validators.requiredTrue]
   });
@@ -56,15 +47,35 @@ export class RegisterComponent {
       hasUpperCase: /[A-Z]/.test(password),
       hasLowerCase: /[a-z]/.test(password),
       hasNumber: /[0-9]/.test(password),
+      hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password)
     };
   }
 
+  getPasswordStrength(): number {
+    if (!this.password?.value) return 0;
+
+    let strength = 0;
+    const checks = this.passwordChecks;
+    const totalChecks = 5; // Total de critérios de validação
+
+    if (checks.minLength) strength += 100 / totalChecks;
+    if (checks.hasUpperCase) strength += 100 / totalChecks;
+    if (checks.hasLowerCase) strength += 100 / totalChecks;
+    if (checks.hasNumber) strength += 100 / totalChecks;
+    if (checks.hasSpecialChar) strength += 100 / totalChecks;
+
+    return Math.min(strength, 100); // Garante que não ultrapasse 100%
+  }
+
   onSubmit() {
+    this.showErrors = true;
     if (this.registerForm.valid) {
       console.log('Form submitted:', this.registerForm.value);
-    } else {
-      this.registerForm.markAllAsTouched();
     }
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 
   get firstName() {
@@ -85,5 +96,9 @@ export class RegisterComponent {
 
   get acceptTerms() {
     return this.registerForm.get('acceptTerms');
+  }
+
+  shouldShowError(control: any): boolean {
+    return control?.invalid && (control?.touched || control?.dirty || this.showErrors);
   }
 }

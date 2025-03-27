@@ -40,6 +40,7 @@ export class StorePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.route.params.subscribe(params => {
       this.selectedCategory = params['category'] || 'all';
     });

@@ -1,0 +1,109 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="register-wrapper">
+  <div class="register-container">
+    <div class="register-header">
+      <h2>Create Your Account</h2>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="firstName"
+              formControlName="firstName"
+              placeholder="Enter your first name"
+              [class.input-error]="shouldShowError(firstName)">
+            <span *ngIf="shouldShowError(firstName)" class="error-icon">!</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="lastName"
+              formControlName="lastName"
+              placeholder="Enter your last name"
+              [class.input-error]="shouldShowError(lastName)">
+            <span *ngIf="shouldShowError(lastName)" class="error-icon">!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <div class="input-container">
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            placeholder="Enter your email"
+            [class.input-error]="shouldShowError(email)">
+          <span *ngIf="shouldShowError(email)" class="error-icon">!</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-container">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+            placeholder="Create a password"
+            [class.input-error]="shouldShowError(password)">
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePasswordVisibility()">
+    <span class="material-icons">
+      {{ showPassword ? 'visibility_off' : 'visibility' }}
+    </span>
+          </button>
+          <span *ngIf="shouldShowError(password)" class="error-icon">!</span>
+        </div>
+
+        <div class="password-strength">
+          <div class="strength-bar">
+            <div class="strength-indicator" [style.width.%]="getPasswordStrength()"></div>
+          </div>
+          <ul class="requirements-list">
+            <li [class.requirement-met]="passwordChecks.minLength">8+ characters</li>
+            <li [class.requirement-met]="passwordChecks.hasUpperCase">Uppercase</li>
+            <li [class.requirement-met]="passwordChecks.hasLowerCase">Lowercase</li>
+            <li [class.requirement-met]="passwordChecks.hasNumber">Number</li>
+            <li [class.requirement-met]="passwordChecks.hasSpecialChar">Special character</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-group terms-group">
+        <label class="checkbox-container">
+          <input
+            type="checkbox"
+            id="terms"
+            formControlName="acceptTerms">
+          <span class="checkmark" [class.checkmark-error]="shouldShowError(acceptTerms)"></span>
+          I agree to the <a href="#" class="text-link">Terms of Service</a> and <a href="#" class="text-link">Privacy
+          Policy</a>
+          <span *ngIf="shouldShowError(acceptTerms)" class="error-icon">!</span>
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        class="submit-btn">
+        Create Account
+      </button>
+    </form>
+
+    <div class="login-redirect">
+      Already have an account? <a routerLink="/account/login" class="text-link">Sign in</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Reset e estilos base */
+* {
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout principal */
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+  padding: 1rem;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.register-header h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.register-header p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Campos do formulário */
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.input-container {
+  position: relative;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #885740;
+  box-shadow: 0 0 0 2px rgba(136, 87, 64, 0.2);
+}
+
+.form-group input.input-error {
+  border-color: #e74c3c;
+  padding-right: 2.5rem;
+}
+
+.error-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #e74c3c;
+  font-weight: bold;
+  font-size: 1rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Campo de password */
+.password-toggle {
+  position: absolute;
+  right: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.password-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.password-toggle .material-icons {
+  font-size: 1.2rem;
+  color: lightgray;
+  transition: color 0.2s ease;
+}
+
+.password-toggle:hover .material-icons {
+  color: #885740;
+}
+
+/* Barra de força da senha */
+.password-strength {
+  margin-top: 0.5rem;
+}
+
+.strength-bar {
+  height: 6px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+/* Barra de força da senha */
+.strength-indicator {
+  height: 100%;
+  background: linear-gradient(to right,
+  #d1c4b8,
+  #c4b4a5,
+  #b8a592,
+  #ab957f,
+  #9f866c,
+  #885740);
+  transition: width 0.5s ease;
+}
+
+.requirements-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.requirements-list li {
+  font-size: 0.75rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+}
+
+.requirements-list li:before {
+  content: '•';
+  margin-right: 0.25rem;
+}
+
+.requirements-list li.requirement-met {
+  color: #885740;
+  font-weight: 500;
+}
+
+.requirements-list li.requirement-met:before {
+  content: '✓';
+}
+
+/* Checkbox de termos */
+.terms-group {
+  margin: 1.5rem 0;
+  padding: 0.5rem 0;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 2rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.5;
+  min-height: 1.5rem;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.checkmark-error {
+  border-color: #e74c3c;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  border-color: #885740;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #885740;
+  border-color: #885740;
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Botão de submit */
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: #885740;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.submit-btn:hover {
+  background-color: #6a4532;
+  transform: translateY(-1px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Link de login */
+.login-redirect {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.text-link {
+  color: #885740;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+  color: #6a4532;
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .register-wrapper {
+    margin-top: 3rem;
+  }
+
+  .password-toggle {
+    right: 2rem;
+  }
+}

@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   isPopupsRoute = false;
   isStoreRoute = false;
   isProductRoute = false;
+  isUserRoute = false;
 
   ngOnInit(): void {
     this.router.events.subscribe(() => {
@@ -30,6 +31,9 @@ export class AppComponent implements OnInit {
     });
     this.router.events.subscribe(() => {
       this.isStoreRoute = this.router.url.startsWith('/store/');
+    });
+    this.router.events.subscribe(() => {
+      this.isUserRoute = this.router.url.startsWith('/account');
     });
   }
 
