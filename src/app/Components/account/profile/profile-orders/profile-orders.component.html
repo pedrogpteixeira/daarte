@@ -1,0 +1,63 @@
+<div class="orders-container">
+  <div class="orders-header">
+    <h3>My Orders</h3>
+    <div class="orders-filter">
+      <select class="filter-select" [(ngModel)]="selectedFilter" (change)="filterOrders()">
+        <option value="all">All Orders</option>
+        <option value="last30">Last 30 Days</option>
+        <option value="last6months">Past 6 Months</option>
+        <option value="2024">2024</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="orders-list">
+    <div *ngFor="let order of visibleOrders" class="order-card">
+      <div class="order-header">
+        <div class="order-info">
+          <span class="order-number">Order #{{order.id}}</span>
+          <span class="order-date">{{order.date | date:'mediumDate'}}</span>
+        </div>
+        <span class="order-status" [class]="'status-' + order.status">{{order.status | titlecase}}</span>
+      </div>
+
+      <div class="order-details">
+        <div class="order-products">
+          <div *ngFor="let product of order.products" class="product-item">
+            <img [src]="product.image" alt="" class="product-image">
+            <div class="product-info">
+              <span class="product-name">{{product.name}}</span>
+              <span class="product-quantity">Qty: {{product.quantity}}</span>
+              <span class="product-price">{{product.price | currency}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>{{order.subtotal | currency}}</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>{{order.shipping | currency}}</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span>{{order.total | currency}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="filteredOrders.length > itemsPerPage" class="orders-pagination">
+    <button class="pagination-btn" (click)="previousPage()" [disabled]="currentPage === 1">
+      <span class="material-icons">chevron_left</span>
+    </button>
+    <span class="pagination-page">Page {{currentPage}} of {{totalPages}}</span>
+    <button class="pagination-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
+      <span class="material-icons">chevron_right</span>
+    </button>
+  </div>
+</div>

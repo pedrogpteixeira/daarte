@@ -1,0 +1,30 @@
+<div class="profile-wrapper">
+  <div class="profile-container">
+    <div class="profile-header">
+      <h2>My Profile</h2>
+      <p>Manage your account information</p>
+    </div>
+
+    <div class="profile-content">
+      <div class="profile-sidebar">
+        <div class="user-stats">
+          <div class="stat-item">
+            <span class="stat-number">{{ user.orders }}</span>
+            <span class="stat-label">Orders</span>
+          </div>
+        </div>
+
+        <nav class="profile-menu">
+          <a routerLink="/account/info" routerLinkActive="active">My Profile</a>
+          <a routerLink="/account/orders" routerLinkActive="active">My Orders</a>
+          <a routerLink="/account/addresses" routerLinkActive="active">Addresses</a>
+          <a routerLink="/account/settings" routerLinkActive="active">Settings</a>
+        </nav>
+      </div>
+
+      <div class="profile-details">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

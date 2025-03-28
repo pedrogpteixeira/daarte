@@ -6,11 +6,25 @@ import {ProductPageComponent} from "./Components/product-page/product-page.compo
 import {StorePageComponent} from "./Components/store-page/store-page.component";
 import {RegisterComponent} from "./Components/account/register/register.component";
 import {LoginComponent} from "./Components/account/login/login.component";
+import {UserProfileComponent} from "./Components/account/profile/user-profile/user-profile.component";
+import {ProfileInfoComponent} from "./Components/account/profile/profile-info/profile-info.component";
+import {ProfileOrdersComponent} from "./Components/account/profile/profile-orders/profile-orders.component";
+import {ProfileAddressesComponent} from "./Components/account/profile/profile-addresses/profile-addresses.component";
+import {ProfileSettingsComponent} from "./Components/account/profile/profile-settings/profile-settings.component";
 
 export const routes: Routes = [
   {path: 'home', component: HomePageComponent},
   {path: 'account/register', component: RegisterComponent},
   {path: 'account/login', component: LoginComponent},
+  {
+    path: 'account', component: UserProfileComponent, children: [
+      {path: '', redirectTo: 'info', pathMatch: 'full'},
+      {path: 'info', component: ProfileInfoComponent},
+      {path: 'orders', component: ProfileOrdersComponent},
+      {path: 'addresses', component: ProfileAddressesComponent},
+      {path: 'settings', component: ProfileSettingsComponent}
+    ]
+  },
   {path: 'popups', component: PopUpComponent},
   {path: 'store/:category', component: StorePageComponent},
   {path: 'product', component: ProductPageComponent},
