@@ -10,7 +10,6 @@ import {UserProfileComponent} from "./Components/account/profile/user-profile/us
 import {ProfileInfoComponent} from "./Components/account/profile/profile-info/profile-info.component";
 import {ProfileOrdersComponent} from "./Components/account/profile/profile-orders/profile-orders.component";
 import {ProfileAddressesComponent} from "./Components/account/profile/profile-addresses/profile-addresses.component";
-import {ProfileSettingsComponent} from "./Components/account/profile/profile-settings/profile-settings.component";
 
 export const routes: Routes = [
   {path: 'home', component: HomePageComponent},
@@ -21,8 +20,7 @@ export const routes: Routes = [
       {path: '', redirectTo: 'info', pathMatch: 'full'},
       {path: 'info', component: ProfileInfoComponent},
       {path: 'orders', component: ProfileOrdersComponent},
-      {path: 'addresses', component: ProfileAddressesComponent},
-      {path: 'settings', component: ProfileSettingsComponent}
+      {path: 'addresses', component: ProfileAddressesComponent}
     ]
   },
   {path: 'popups', component: PopUpComponent},

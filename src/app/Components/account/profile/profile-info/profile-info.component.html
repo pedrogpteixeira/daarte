@@ -25,31 +25,3 @@
     <input *ngIf="editMode" type="tel" [(ngModel)]="user.phone" class="edit-input">
   </div>
 </div>
-
-<div class="detail-section">
-  <h3>Address Book</h3>
-  <div class="addresses-list">
-    <div *ngFor="let address of user.addresses" class="address-card">
-      <div class="address-header">
-        <span class="address-type">{{ address.type }}</span>
-        <span *ngIf="address.primary" class="primary-badge">Primary</span>
-      </div>
-      <p class="address-street">{{ address.street }}</p>
-      <p class="address-city">{{ address.city }}</p>
-      <div class="address-actions" *ngIf="editMode">
-        <button class="action-btn">
-          <span class="material-icons">edit</span>
-        </button>
-        <button class="action-btn">
-          <span class="material-icons">delete</span>
-        </button>
-        <button *ngIf="!address.primary" class="action-btn">
-          <span class="material-icons">star</span> Set as Primary
-        </button>
-      </div>
-    </div>
-    <button *ngIf="editMode" class="add-address-btn">
-      <span class="material-icons">add</span> Add New Address
-    </button>
-  </div>
-</div>

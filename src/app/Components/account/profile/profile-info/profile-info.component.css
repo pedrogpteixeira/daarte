@@ -77,54 +77,12 @@
   border-color: #885740;
 }
 
-/* Endereços */
-.addresses-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.address-card {
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 1.5rem;
-  position: relative;
-}
-
-.address-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.address-type {
-  font-weight: 600;
-  color: #333;
-}
-
 .primary-badge {
   background-color: #885740;
   color: white;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-size: 0.75rem;
-}
-
-.address-street {
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-}
-
-.address-city {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.address-actions {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
 }
 
 .action-btn {
@@ -146,32 +104,6 @@
 
 .action-btn .material-icons {
   font-size: 1rem;
-}
-
-.add-address-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #f5f5f5;
-  border: 2px dashed #ddd;
-  border-radius: 8px;
-  padding: 1.5rem;
-  width: 100%;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.add-address-btn:hover {
-  background-color: #eee;
-  border-color: #885740;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .addresses-list {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 480px) {

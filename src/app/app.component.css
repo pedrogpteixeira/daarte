@@ -17,3 +17,7 @@ div .top-bar {
 .hover-background {
   background-color: #885740; /* Cor do hover */
 }
+
+.router-outlet{
+  min-height: 100vh;
+}
