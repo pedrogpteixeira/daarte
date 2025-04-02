@@ -2,6 +2,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {Component} from "@angular/core";
 import {NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {AuthService} from "../../../services/auth.service";
 
 
 @Component({
@@ -35,7 +36,7 @@ export class RegisterComponent {
     acceptTerms: [false, Validators.requiredTrue]
   });
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.registerForm.get('password')?.valueChanges.subscribe(password => {
       this.passwordChecks = this.validatePassword(password);
     });
@@ -67,11 +68,18 @@ export class RegisterComponent {
     return Math.min(strength, 100); // Garante que não ultrapasse 100%
   }
 
-  onSubmit() {
+  public async onSubmit() {
     this.showErrors = true;
-    if (this.registerForm.valid) {
-      console.log('Form submitted:', this.registerForm.value);
+    if (this.registerForm.invalid) {
+      return;
     }
+
+    await this.authService.signUp(
+      this.firstName?.value,
+      this.lastName?.value,
+      this.email?.value,
+      this.password?.value
+    );
   }
 
   togglePasswordVisibility() {

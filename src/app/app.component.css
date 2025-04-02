@@ -19,5 +19,5 @@ div .top-bar {
 }
 
 .router-outlet{
-  min-height: 100vh;
+  min-height: 68vh;
 }
