@@ -19,6 +19,7 @@ export class ProfileInfoComponent {
   user = {
     name: 'João Silva',
     email: 'joao.silva@example.com',
+    phone: '912345678',
     addresses: [
       {
         type: 'Casa',

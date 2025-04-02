@@ -43,6 +43,13 @@ export class ProfileOrdersComponent {
           image: '/assets/images/products/mug.jpg',
           quantity: 1,
           price: 19.95
+        },
+        {
+          id: 'p8',
+          name: 'Ceramic Coffee Mug',
+          image: '/assets/images/products/mug.jpg',
+          quantity: 1,
+          price: 19.95
         }
       ]
     },

@@ -1,1 +1,89 @@
-<p>profile-addresses works!</p>
+<div class="addresses-container">
+  <div class="addresses-header">
+    <h3>My Addresses</h3>
+    <button class="add-address-btn" (click)="openAddAddressModal()">
+      <span class="material-icons">add</span> Add New Address
+    </button>
+  </div>
+
+  <div class="addresses-list">
+    <div *ngFor="let address of addresses" class="address-card">
+      <div class="address-header">
+        <span class="address-type">{{ address.type }}</span>
+        <span *ngIf="address.primary" class="primary-badge">Primary</span>
+      </div>
+
+      <div class="address-body">
+        <p class="address-street">{{ address.street }}</p>
+        <p class="address-city">{{ address.city }}, {{ address.postalCode }}</p>
+        <p class="address-country">{{ address.country }}</p>
+      </div>
+
+      <div class="address-actions">
+        <button class="action-btn" (click)="editAddress(address)">
+          <span class="material-icons">edit</span> Edit
+        </button>
+        <button class="action-btn" (click)="deleteAddress(address.id)">
+          <span class="material-icons">delete</span> Delete
+        </button>
+        <button *ngIf="!address.primary" class="action-btn primary" (click)="setAsPrimary(address.id)">
+          <span class="material-icons">star</span> Set as Primary
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="addresses.length === 0" class="no-addresses">
+      <span class="material-icons">location_off</span>
+      <p>You haven't added any addresses yet</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para adicionar/editar endereço -->
+<div *ngIf="showAddressModal" class="address-modal">
+  <div class="modal-content">
+    <h4>{{ editingAddress ? 'Edit Address' : 'Add New Address' }}</h4>
+
+    <form [formGroup]="addressForm" (ngSubmit)="saveAddress()">
+      <div class="form-group">
+        <label>Address Type</label>
+        <select formControlName="type" class="form-control">
+          <option value="home">Home</option>
+          <option value="work">Work</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Street Address</label>
+        <input type="text" formControlName="street" class="form-control">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" formControlName="city" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Postal Code</label>
+          <input type="text" formControlName="postalCode" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Country</label>
+        <input type="text" formControlName="country" class="form-control">
+      </div>
+
+      <div class="form-group checkbox-group">
+        <input type="checkbox" formControlName="primary" id="primary-address">
+        <label for="primary-address">Set as primary address</label>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" (click)="closeModal()">Cancel</button>
+        <button type="submit" class="save-btn">Save Address</button>
+      </div>
+    </form>
+  </div>
+</div>
