@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
+import {AuthService} from "../../../services/auth.service";
+import {JwtService} from "../../../services/jwt.service";
 
 @Component({
   selector: 'app-login',
@@ -24,13 +26,13 @@ export class LoginComponent {
     rememberMe: [false]
   });
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private jwtService: JwtService) {
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.showErrors = true;
     if (this.loginForm.valid) {
-      console.log('Form submitted:', this.loginForm.value);
+      await this.authService.signIn(this.loginForm.value.email, this.loginForm.value.password);
     }
   }
 

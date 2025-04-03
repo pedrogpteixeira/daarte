@@ -10,13 +10,15 @@ import {UserProfileComponent} from "./Components/account/profile/user-profile/us
 import {ProfileInfoComponent} from "./Components/account/profile/profile-info/profile-info.component";
 import {ProfileOrdersComponent} from "./Components/account/profile/profile-orders/profile-orders.component";
 import {ProfileAddressesComponent} from "./Components/account/profile/profile-addresses/profile-addresses.component";
+import {authGuard} from "./guards/auth.guard";
 
 export const routes: Routes = [
   {path: 'home', component: HomePageComponent},
   {path: 'account/register', component: RegisterComponent},
   {path: 'account/login', component: LoginComponent},
   {
-    path: 'account', component: UserProfileComponent, children: [
+    path: 'account', component: UserProfileComponent, canActivate: [authGuard],
+    children: [
       {path: '', redirectTo: 'info', pathMatch: 'full'},
       {path: 'info', component: ProfileInfoComponent},
       {path: 'orders', component: ProfileOrdersComponent},

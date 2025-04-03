@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {environment} from "../environments/environment";
+import {environment} from "../environments/environment.prod";
+import {RegisterData} from "../models/register-data.model";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class AuthService {
   constructor() {
   }
 
-  public async signUp(firstName: string, lastName: string, email: string, password: string): Promise<void> {
+  public async signUp(data: RegisterData): Promise<void> {
     try {
       const response = await fetch(environment.apiUrl + environment.authEndpoint + 'signup', {
         method: 'POST',
@@ -17,29 +18,57 @@ export class AuthService {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: password,
-          roleId: ' '
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          password: data.password,
+          roleId: data.roleId
         })
       });
 
       if (response.status === 201) {
         const data = await response.json();
         this.storeToken(data.token);
-        window.location.href = '/home';
+        window.location.href = '/account/login';
       } else {
-        alert('Invalid credentials');
+        const errorData = await response.json();
+        window.location.href = '/home';
+        alert(errorData);
       }
     } catch (e) {
       console.log(e);
     }
   }
 
-  public async isAuthenticated(): Promise<boolean> {
+  public async signIn(email: string, password: string): Promise<void> {
     try {
-      return localStorage.getItem('token') !== null;
+      const response = await fetch(environment.apiUrl + environment.authEndpoint + 'signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          password
+        })
+      });
+
+      if (response.status === 200) {
+        const data = await response.json();
+        this.storeToken(data.token);
+        window.location.href = '/account';
+      } else {
+        const errorData = await response.json();
+        alert(errorData);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  public isAuthenticated(): boolean {
+    try {
+      return localStorage.getItem('token') != null;
     } catch (e) {
       return false;
     }

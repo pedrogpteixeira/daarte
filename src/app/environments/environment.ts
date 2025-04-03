@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:3000/',
-  authEndpoint: 'user/auth/'
+  production: true,
+  apiUrl: 'https://seu-backend.com/api',
+  authEndpoint: '/auth'
 };

@@ -3,6 +3,7 @@ import {Component} from "@angular/core";
 import {NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
+import {RegisterData} from "../../../models/register-data.model";
 
 
 @Component({
@@ -74,12 +75,20 @@ export class RegisterComponent {
       return;
     }
 
-    await this.authService.signUp(
-      this.firstName?.value,
-      this.lastName?.value,
-      this.email?.value,
-      this.password?.value
-    );
+    const userData: RegisterData = {
+      firstName: this.registerForm.value.firstName,
+      lastName: this.registerForm.value.lastName,
+      email: this.registerForm.value.email,
+      password: this.registerForm.value.password,
+      roleId: ' '
+    }
+
+    try {
+      await this.authService.signUp(userData);
+    } catch (error) {
+      console.error('Error during registration:', error);
+      alert('Registration failed. Please try again.');
+    }
   }
 
   togglePasswordVisibility() {
