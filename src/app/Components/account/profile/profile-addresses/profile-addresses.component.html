@@ -1,8 +1,8 @@
 <div class="addresses-container">
   <div class="addresses-header">
-    <h3>My Addresses</h3>
+    <h3>Os Meus Endereços</h3>
     <button class="add-address-btn" (click)="openAddAddressModal()">
-      <span class="material-icons">add</span> Add New Address
+      <span class="material-icons">add</span> Adicionar Endereço
     </button>
   </div>
 
@@ -10,31 +10,36 @@
     <div *ngFor="let address of addresses" class="address-card">
       <div class="address-header">
         <span class="address-type">{{ address.type }}</span>
-        <span *ngIf="address.primary" class="primary-badge">Primary</span>
+        <span *ngIf="address.primary" class="primary-badge">Principal</span>
       </div>
 
       <div class="address-body">
+        <p class="address-name">{{ address.name }}</p>
         <p class="address-street">{{ address.street }}</p>
-        <p class="address-city">{{ address.city }}, {{ address.postalCode }}</p>
+        <p class="address-details">
+          {{ address.postalCode }} {{ address.city }}
+          <span *ngIf="address.region">, {{ address.region }}</span>
+        </p>
         <p class="address-country">{{ address.country }}</p>
+        <p class="address-phone">{{ address.phone }}</p>
       </div>
 
       <div class="address-actions">
         <button class="action-btn" (click)="editAddress(address)">
-          <span class="material-icons">edit</span> Edit
+          <span class="material-icons">edit</span> Editar
         </button>
         <button class="action-btn" (click)="deleteAddress(address.id)">
-          <span class="material-icons">delete</span> Delete
+          <span class="material-icons">delete</span> Eliminar
         </button>
         <button *ngIf="!address.primary" class="action-btn primary" (click)="setAsPrimary(address.id)">
-          <span class="material-icons">star</span> Set as Primary
+          <span class="material-icons">star</span> Tornar Principal
         </button>
       </div>
     </div>
 
     <div *ngIf="addresses.length === 0" class="no-addresses">
       <span class="material-icons">location_off</span>
-      <p>You haven't added any addresses yet</p>
+      <p>Ainda não adicionou nenhum endereço</p>
     </div>
   </div>
 </div>
@@ -42,47 +47,97 @@
 <!-- Modal para adicionar/editar endereço -->
 <div *ngIf="showAddressModal" class="address-modal">
   <div class="modal-content">
-    <h4>{{ editingAddress ? 'Edit Address' : 'Add New Address' }}</h4>
+    <h4>{{ editingAddress ? 'Editar Endereço' : 'Adicionar Endereço' }}</h4>
 
     <form [formGroup]="addressForm" (ngSubmit)="saveAddress()">
       <div class="form-group">
-        <label>Address Type</label>
-        <select formControlName="type" class="form-control">
-          <option value="home">Home</option>
-          <option value="work">Work</option>
-          <option value="other">Other</option>
-        </select>
+        <div class="form-group">
+          <label>Tipo de Endereço</label>
+          <div class="input-container" id="address-type">
+            <select formControlName="type" class="form-control"
+                    [class.input-error]="shouldShowError('type')">
+              <option value="Home">Casa</option>
+              <option value="Work">Trabalho</option>
+              <option value="Other">Outro</option>
+            </select>
+            <span *ngIf="shouldShowError('type')" class="error-icon">!</span>
+          </div>
+          <label>País</label>
+          <div class="input-container">
+            <select formControlName="country" class="form-control"
+                    [class.input-error]="shouldShowError('country')">
+              <option *ngFor="let country of countries" [ngValue]="country">
+                {{ country.name }}
+              </option>
+            </select>
+            <span *ngIf="shouldShowError('country')" class="error-icon">!</span>
+          </div>
+        </div>
+        <label>Nome completo (nome e sobrenome)</label>
+        <div class="input-container">
+          <input type="text" formControlName="name" class="form-control"
+                 [class.input-error]="shouldShowError('name')">
+          <span *ngIf="shouldShowError('name')" class="error-icon">!</span>
+        </div>
       </div>
 
       <div class="form-group">
-        <label>Street Address</label>
-        <input type="text" formControlName="street" class="form-control">
+        <label>Endereço</label>
+        <div class="input-container">
+          <input type="text" formControlName="street" class="form-control"
+                 [class.input-error]="shouldShowError('street')">
+          <span *ngIf="shouldShowError('street')" class="error-icon">!</span>
+        </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
-          <label>City</label>
-          <input type="text" formControlName="city" class="form-control">
+          <label>Cidade</label>
+          <div class="input-container">
+            <input type="text" formControlName="city" class="form-control"
+                   [class.input-error]="shouldShowError('city')">
+            <span *ngIf="shouldShowError('city')" class="error-icon">!</span>
+          </div>
         </div>
         <div class="form-group">
-          <label>Postal Code</label>
-          <input type="text" formControlName="postalCode" class="form-control">
+          <label>Estado/Província/Região</label>
+          <div class="input-container">
+            <input type="text" formControlName="region" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>CEP/Código Postal</label>
+          <div class="input-container">
+            <input type="text" formControlName="postalCode" class="form-control"
+                   [class.input-error]="shouldShowError('postalCode')">
+            <span *ngIf="shouldShowError('postalCode')" class="error-icon">!</span>
+          </div>
         </div>
       </div>
 
       <div class="form-group">
-        <label>Country</label>
-        <input type="text" formControlName="country" class="form-control">
+        <label>Telemóvel</label>
+        <div class="phone-input-container">
+          <div class="phone-prefix">{{ phonePrefix }}</div>
+          <input type="tel" formControlName="phone" class="form-control phone-input"
+                 [class.input-error]="shouldShowError('phone')" (input)="formatPhoneNumber()">
+          <span *ngIf="shouldShowError('phone')" class="error-icon">!</span>
+        </div>
       </div>
 
       <div class="form-group checkbox-group">
         <input type="checkbox" formControlName="primary" id="primary-address">
-        <label for="primary-address">Set as primary address</label>
+        <label for="primary-address">Definir como endereço principal</label>
       </div>
 
       <div class="form-actions">
-        <button type="button" class="cancel-btn" (click)="closeModal()">Cancel</button>
-        <button type="submit" class="save-btn">Save Address</button>
+        <button type="button" class="cancel-btn" (click)="closeModal()">Cancelar</button>
+        <button type="submit" class="save-btn" [disabled]="addressForm.invalid">
+          {{ editingAddress ? 'Atualizar' : 'Guardar' }}
+        </button>
       </div>
     </form>
   </div>

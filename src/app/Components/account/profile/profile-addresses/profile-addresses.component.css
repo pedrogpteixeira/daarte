@@ -1,7 +1,11 @@
+/* Estilos base do container */
 .addresses-container {
   padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Cabeçalho */
 .addresses-header {
   display: flex;
   justify-content: space-between;
@@ -13,8 +17,10 @@
   font-size: 1.5rem;
   color: #333;
   margin: 0;
+  font-weight: 600;
 }
 
+/* Botão de adicionar */
 .add-address-btn {
   display: flex;
   align-items: center;
@@ -33,34 +39,45 @@
   background-color: #6a4532;
 }
 
+.add-address-btn .material-icons {
+  font-size: 1.2rem;
+}
+
+/* Lista de endereços */
 .addresses-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
+/* Cartão de endereço */
 .address-card {
   border: 1px solid #eee;
   border-radius: 8px;
   padding: 1.5rem;
   transition: all 0.3s ease;
+  background-color: white;
 }
 
 .address-card:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+/* Cabeçalho do cartão */
 .address-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eee;
 }
 
 .address-type {
   font-weight: 600;
   color: #333;
-  text-transform: capitalize;
+  font-size: 1.1rem;
 }
 
 .primary-badge {
@@ -69,23 +86,37 @@
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-size: 0.75rem;
+  font-weight: 500;
 }
 
+/* Corpo do endereço */
 .address-body {
   margin-bottom: 1.5rem;
 }
 
-.address-street {
-  font-weight: 500;
-  margin-bottom: 0.25rem;
+#address-type{
+  margin-bottom: 1rem;
 }
 
-.address-city, .address-country {
+.address-street .address-name {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.address-details {
   color: #666;
   font-size: 0.9rem;
   margin: 0.25rem 0;
 }
 
+.address-country, .address-phone {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+}
+
+/* Ações */
 .address-actions {
   display: flex;
   gap: 0.75rem;
@@ -119,6 +150,7 @@
   font-size: 1rem;
 }
 
+/* Sem endereços */
 .no-addresses {
   grid-column: 1 / -1;
   text-align: center;
@@ -132,7 +164,12 @@
   color: #ccc;
 }
 
-/* Modal Styles */
+.no-addresses p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Modal */
 .address-modal {
   position: fixed;
   top: 0;
@@ -148,22 +185,30 @@
 
 .modal-content {
   background-color: white;
-  padding: 2rem;
+  padding: 2rem 3rem;
   border-radius: 8px;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   max-height: 90vh;
   overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
 .modal-content h4 {
   margin-top: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   color: #333;
+  font-size: 1.25rem;
+  text-align: center;
 }
 
+/* Formulário */
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
 }
 
 .form-group label {
@@ -171,14 +216,24 @@
   margin-bottom: 0.5rem;
   font-weight: 500;
   color: #555;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
 }
 
 .form-control {
-  width: 80%;
+  width: 100%;
   padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
 }
 
 .form-control:focus {
@@ -186,30 +241,54 @@
   border-color: #885740;
 }
 
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1em;
+}
+
+/* Linhas do formulário */
 .form-row {
-  display: flex;
-  gap: 1rem;
+  display: block;
+  margin-bottom: 1.5rem;
 }
 
 .form-row .form-group {
-  flex: 1;
+  margin-bottom: 1.5rem;
 }
 
+/* Checkbox */
 .checkbox-group {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 500px;
 }
 
 .checkbox-group input {
   width: auto;
 }
 
+.checkbox-group label {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+/* Ações do formulário */
 .form-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cancel-btn {
@@ -218,6 +297,12 @@
   border: 1px solid #ddd;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.cancel-btn:hover {
+  background-color: #f5f5f5;
 }
 
 .save-btn {
@@ -228,10 +313,71 @@
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .save-btn:hover {
   background-color: #6a4532;
+}
+
+.save-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Validação */
+.input-error {
+  border-color: #ff4444 !important;
+  padding-right: 2.5rem !important;
+  width: 100%;
+}
+
+.error-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff4444;
+  font-weight: bold;
+  font-size: 1rem;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Campo de telefone corrigido */
+.phone-input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.phone-prefix {
+  padding: 0.75rem;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  margin-right: -1px;
+}
+
+.phone-input {
+  flex: 1;
+  border-radius: 0 4px 4px 0 !important;
+  border-left: none !important;
+  padding-left: 0.75rem !important;
 }
 
 /* Responsividade */
@@ -246,14 +392,16 @@
     grid-template-columns: 1fr;
   }
 
-  .form-row {
-    flex-direction: column;
-    gap: 0;
-  }
-
   .modal-content {
     width: 90%;
     padding: 1.5rem;
+  }
+
+  .form-group,
+  .form-actions,
+  .checkbox-group {
+    max-width: 100%;
+    padding: 0;
   }
 }
 
@@ -273,5 +421,10 @@
 
   .cancel-btn, .save-btn {
     width: 100%;
+  }
+
+  .add-address-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
