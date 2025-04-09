@@ -1,6 +1,6 @@
 /* Estilos base do container */
 .addresses-container {
-  padding: 1rem;
+  padding: 0 1rem;
   max-width: 1200px;
   margin: 0 auto;
 }
