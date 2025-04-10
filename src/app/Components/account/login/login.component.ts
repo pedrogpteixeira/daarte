@@ -1,9 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
 import {AuthService} from "../../../services/auth.service";
-import {JwtService} from "../../../services/jwt.service";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +15,7 @@ import {JwtService} from "../../../services/jwt.service";
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   showPassword = false;
   showErrors = false;
 
@@ -26,13 +25,19 @@ export class LoginComponent {
     rememberMe: [false]
   });
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private jwtService: JwtService) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
+  }
+
+  ngOnInit(): void {
+    if (this.authService.isAuthenticated()){
+      window.location.href = '/account';
+    }
   }
 
   async onSubmit() {
     this.showErrors = true;
     if (this.loginForm.valid) {
-      await this.authService.signIn(this.loginForm.value.email, this.loginForm.value.password);
+      await this.authService.signIn(this.loginForm.value.email, this.loginForm.value.password, this.loginForm.value.rememberMe);
     }
   }
 

@@ -11,17 +11,13 @@
   <h3>Personal Information</h3>
   <div class="detail-row">
     <span class="detail-label">Full Name</span>
-    <span class="detail-value" *ngIf="!editMode">{{ user.name }}</span>
-    <input *ngIf="editMode" type="text" [(ngModel)]="user.name" class="edit-input">
+    <span class="detail-value" *ngIf="!editMode">{{ user.firstName }} {{ user.lastName }}</span>
+    <input *ngIf="editMode" type="text" [(ngModel)]="user.firstName" class="edit-input">
+    <input *ngIf="editMode" type="text" [(ngModel)]="user.lastName" class="edit-input">
   </div>
   <div class="detail-row">
     <span class="detail-label">Email</span>
     <span class="detail-value" *ngIf="!editMode">{{ user.email }}</span>
     <input *ngIf="editMode" type="email" [(ngModel)]="user.email" class="edit-input">
-  </div>
-  <div class="detail-row">
-    <span class="detail-label">Phone</span>
-    <span class="detail-value" *ngIf="!editMode">{{ user.phone }}</span>
-    <input *ngIf="editMode" type="tel" [(ngModel)]="user.phone" class="edit-input">
   </div>
 </div>

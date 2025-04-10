@@ -1,10 +1,9 @@
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 import {RegisterData} from "../../../models/register-data.model";
-
 
 @Component({
   selector: 'app-register',
@@ -17,7 +16,7 @@ import {RegisterData} from "../../../models/register-data.model";
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit{
   showPassword = false;
   passwordChecks: any = {};
   showErrors = false;
@@ -41,6 +40,12 @@ export class RegisterComponent {
     this.registerForm.get('password')?.valueChanges.subscribe(password => {
       this.passwordChecks = this.validatePassword(password);
     });
+  }
+
+  ngOnInit(): void {
+    if (this.authService.isAuthenticated()) {
+      window.location.href = '/account';
+    }
   }
 
   validatePassword(password: string) {

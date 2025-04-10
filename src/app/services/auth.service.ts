@@ -40,7 +40,7 @@ export class AuthService {
     }
   }
 
-  public async signIn(email: string, password: string): Promise<void> {
+  public async signIn(email: string, password: string, rememberMe: boolean): Promise<void> {
     try {
       const response = await fetch(environment.apiUrl + environment.authEndpoint + 'signin', {
         method: 'POST',
@@ -49,7 +49,8 @@ export class AuthService {
         },
         body: JSON.stringify({
           email,
-          password
+          password,
+          rememberMe
         })
       });
 
@@ -74,17 +75,13 @@ export class AuthService {
     }
   }
 
-  public async logout(): Promise<void> {
+  logout(): void {
     this.clearLocalStorage();
-    window.location.href = '/home';
+    window.location.href = '/account/login';
   }
 
   private storeToken(token: string): void {
     localStorage.setItem('token', token);
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem('token');
   }
 
   clearLocalStorage(): void {

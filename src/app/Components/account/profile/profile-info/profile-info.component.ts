@@ -1,6 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {UserData} from "../../../../models/user-data";
+import {UserService} from "../../../../services/user.service";
+import {JwtService} from "../../../../services/jwt.service";
 
 @Component({
   selector: 'app-profile-info',
@@ -8,40 +11,36 @@ import {FormsModule} from "@angular/forms";
   imports: [
     NgIf,
     FormsModule,
-    NgForOf
   ],
   templateUrl: './profile-info.component.html',
   styleUrl: './profile-info.component.css'
 })
-export class ProfileInfoComponent {
+export class ProfileInfoComponent implements OnInit {
+
+  constructor(private userService: UserService) {
+  }
+
+  async ngOnInit(): Promise<void> {
+    this.user = await this.userService.getUserById();
+  }
+
   editMode = false;
 
-  user = {
-    name: 'João Silva',
-    email: 'joao.silva@example.com',
-    phone: '912345678',
-    addresses: [
-      {
-        type: 'Casa',
-        street: 'Rua das Flores, 123',
-        city: 'Lisboa',
-        primary: true
-      },
-      {
-        type: 'Trabalho',
-        street: 'Avenida da Liberdade, 456',
-        city: 'Lisboa',
-        primary: false
-      }
-    ]
-  };
+  user: UserData = {
+    id: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    roleId: ''
+  }
 
   toggleEditMode() {
     this.editMode = !this.editMode;
   }
 
-  saveProfile() {
+  async saveProfile() {
     this.editMode = false;
-    console.log('Perfil atualizado:', this.user);
+    await this.userService.updateUser(this.user);
   }
 }
