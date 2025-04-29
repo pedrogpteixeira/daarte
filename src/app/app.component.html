@@ -4,7 +4,7 @@
   <app-top-bar></app-top-bar>
 </div>
 <div class="header" [class.scrolled]="isScrolled"
-     [ngClass]="{ 'hover-background': isPopupsRoute || isProductRoute || isStoreRoute || isUserRoute }">
+     [ngClass]="{ 'hover-background': isNotHomeRoute }">
   <app-header></app-header>
 </div>
 <div class="router-outlet">

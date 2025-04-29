@@ -5,4 +5,6 @@ export const environment = {
   userEndpoint: 'user/',
   orderEndpoint: 'order/',
   deliveryEndpoint: 'delivery/',
+  productEndpoint: 'product/',
+  categoryEndpoint: 'category/',
 };

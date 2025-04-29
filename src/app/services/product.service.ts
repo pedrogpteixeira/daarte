@@ -1,27 +1,28 @@
 import {Injectable} from '@angular/core';
+import {environment} from "../environments/environment.prod";
+import {Category} from "../models/category";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private products = [
-    {
-      id: '1',
-      name: 'Calças de Fato de Treino',
-      price: 29.99,
-      description: 'Confortáveis e estilosas, ideais para o dia a dia.',
-      images: ['assets/img1.jpg', 'assets/img2.jpg', 'assets/img3.jpg']
-    },
-    {
-      id: '2',
-      name: 'Mala Artesanal',
-      price: 45.00,
-      description: 'Feita à mão com materiais sustentáveis.',
-      images: ['assets/bag1.jpg', 'assets/bag2.jpg']
-    }
-  ];
+  public async getCategories(): Promise<Category[]> {
+    try {
+      const response = await fetch(environment.apiUrl + environment.productEndpoint + environment.categoryEndpoint, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
 
-  getProductById(id: string) {
-    return this.products.find(p => p.id === id);
+      if (response.status === 404) {
+        return [];
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      throw error;
+    }
   }
 }

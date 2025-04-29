@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {categories} from "../../../../utils/mockData";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {Router} from "@angular/router";
+import {ProductService} from "../../../services/product.service";
+import {Category} from "../../../models/category";
 
 @Component({
   selector: 'app-filter-side-bar',
@@ -13,7 +14,7 @@ import {Router} from "@angular/router";
   templateUrl: './filter-side-bar.component.html',
   styleUrl: './filter-side-bar.component.css'
 })
-export class FilterSideBarComponent {
+export class FilterSideBarComponent implements OnInit {
   @Input() selectedCategory: string = 'All';
   @Output() selectedCategoryChange = new EventEmitter<string>();
 
@@ -29,7 +30,16 @@ export class FilterSideBarComponent {
   @Input() isMobileFilterOpen: boolean = false;
   @Output() isMobileFilterOpenChange = new EventEmitter<boolean>();
 
-  constructor(private router: Router) {
+  categories: Category[] = [{id: 'All', name: 'All'}];
+
+  constructor(private router: Router, private productService: ProductService) {
+  }
+
+  async ngOnInit(): Promise<void> {
+    const categories1 = await this.productService.getCategories();
+    for (const category of categories1) {
+      this.categories.push(category);
+    }
   }
 
   // Handle category change
@@ -53,6 +63,4 @@ export class FilterSideBarComponent {
     this.isMobileFilterOpen = isOpen;
     this.isMobileFilterOpenChange.emit(isOpen);
   }
-
-  protected readonly categories = categories;
 }

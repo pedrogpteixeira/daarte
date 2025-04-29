@@ -1,0 +1,56 @@
+<!-- cart-page.component.html -->
+<div class="cart-page">
+  <div class="container">
+    <h1 class="page-title">Shopping Cart</h1>
+
+    <div class="cart-layout">
+      <!-- Cart Items - Left Side -->
+      <div class="cart-items">
+        @if (cartItems.length === 0) {
+          <p class="empty-cart">Your cart is empty</p>
+        } @else {
+          <div class="items-list">
+            @for (item of cartItems; track item.id) {
+              <app-cart-item
+                [image]="item.image"
+                [name]="item.name"
+                [price]="item.price"
+                [quantity]="item.quantity"
+                (quantityChange)="updateQuantity(item.id, $event)"
+                (remove)="removeItem(item.id)">
+              </app-cart-item>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Order Summary - Right Side -->
+      <div class="order-summary">
+        <div class="summary-card">
+          <h2 class="summary-title">Order Summary</h2>
+
+          <div class="summary-details">
+            <div class="summary-row">
+              <span class="label">Subtotal</span>
+              <span class="value">${{ subtotal.toFixed(2) }}</span>
+            </div>
+
+            <div class="summary-row">
+              <span class="label">Shipping</span>
+              <span class="value">${{ shipping.toFixed(2) }}</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="summary-row total">
+              <span class="label">Total</span>
+              <span class="value">${{ total.toFixed(2) }}</span>
+            </div>
+          </div>
+
+          <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

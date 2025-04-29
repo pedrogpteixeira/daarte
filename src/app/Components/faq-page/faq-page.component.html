@@ -1,0 +1,35 @@
+<!-- faq-page.component.html -->
+<div class="faq-page">
+  <div class="container">
+    <h1 class="page-title">Frequently Asked Questions</h1>
+
+    <div class="faq-categories">
+      @for (category of faqCategories; track category.name) {
+        <div class="category">
+          <h2 class="category-title">{{ category.name }}</h2>
+
+          <div class="questions-list">
+            @for (faq of category.questions; track faq.question) {
+              <div class="question-card">
+                <button
+                  class="question-button"
+                  [class.active]="isQuestionOpen(faq.question)"
+                  (click)="toggleQuestion(faq.question)">
+
+                  <h3 class="question-text">{{ faq.question }}</h3>
+                  <span class="chevron-icon" [class.rotated]="isQuestionOpen(faq.question)">▼</span>
+                </button>
+
+                @if (isQuestionOpen(faq.question)) {
+                  <div class="answer-content">
+                    <p class="answer-text">{{ faq.answer }}</p>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -7,11 +7,11 @@
       <div class="filter-options">
         <button
           *ngFor="let category of categories"
-          (click)="handleCategoryChange(category)"
-          [class.active]="selectedCategory.toLowerCase() === category.toLowerCase()"
+          (click)="handleCategoryChange(category.name)"
+          [class.active]="selectedCategory.toLowerCase() === category.name.toLowerCase()"
           class="filter-option"
         >
-          {{ category }}
+          {{ category.name }}
         </button>
       </div>
     </div>
@@ -90,8 +90,8 @@
         <div class="filter-options">
           <button
             *ngFor="let category of categories"
-            (click)="handleCategoryChange(category)"
-            [class.active]="selectedCategory === category"
+            (click)="handleCategoryChange(category.name)"
+            [class.active]="selectedCategory === category.name"
             class="filter-option"
           >
             {{ category }}

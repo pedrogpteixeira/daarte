@@ -11,6 +11,8 @@ import {ProfileInfoComponent} from "./Components/account/profile/profile-info/pr
 import {ProfileOrdersComponent} from "./Components/account/profile/profile-orders/profile-orders.component";
 import {ProfileAddressesComponent} from "./Components/account/profile/profile-addresses/profile-addresses.component";
 import {authGuard} from "./guards/auth.guard";
+import { CartPageComponent } from './Components/cart-page/cart-page.component';
+import {FAQPageComponent} from "./Components/faq-page/faq-page.component";
 
 export const routes: Routes = [
   {path: 'home', component: HomePageComponent},
@@ -25,6 +27,8 @@ export const routes: Routes = [
       {path: 'addresses', component: ProfileAddressesComponent}
     ]
   },
+  {path: 'cart', component: CartPageComponent},
+  {path: 'faq', component: FAQPageComponent},
   {path: 'popups', component: PopUpComponent},
   {path: 'store/:category', component: StorePageComponent},
   {path: 'product', component: ProductPageComponent},

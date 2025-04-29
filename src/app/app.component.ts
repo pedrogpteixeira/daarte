@@ -17,23 +17,11 @@ export class AppComponent implements OnInit {
 
   isScrolled = false; // Estado para verificar o scroll
 
-  isPopupsRoute = false;
-  isStoreRoute = false;
-  isProductRoute = false;
-  isUserRoute = false;
+  isNotHomeRoute = false; // Estado para verificar se não está na rota inicial
 
   ngOnInit(): void {
     this.router.events.subscribe(() => {
-      this.isPopupsRoute = this.router.url === '/popups';
-    });
-    this.router.events.subscribe(() => {
-      this.isProductRoute = this.router.url === '/product';
-    });
-    this.router.events.subscribe(() => {
-      this.isStoreRoute = this.router.url.startsWith('/store/');
-    });
-    this.router.events.subscribe(() => {
-      this.isUserRoute = this.router.url.startsWith('/account');
+      this.isNotHomeRoute = this.router.url !== '/home';
     });
   }
 

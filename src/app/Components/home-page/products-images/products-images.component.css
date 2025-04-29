@@ -3,7 +3,7 @@
   flex-wrap: wrap; /* Permite que os itens quebrem linha */
   gap: 2rem;
   width: 100%;
-  margin: 0 auto;
+  justify-content: center;
 }
 
 /* 4 colunas em telas grandes (padrão) */

@@ -1,0 +1,30 @@
+<!-- cart-item.component.html -->
+<div class="cart-item">
+  <div class="image-container">
+    <img [src]="image" [alt]="name" class="product-image">
+  </div>
+
+  <div class="details-container">
+    <div class="header">
+      <h3>{{ name }}</h3>
+      <p class="price">{{ price }}</p>
+    </div>
+
+    <div class="controls">
+      <div class="quantity-control">
+        <button (click)="decreaseQuantity()" class="quantity-btn" aria-label="Decrease quantity">
+          <span class="icon-minus"></span>
+        </button>
+        <span class="quantity-value">{{ quantity }}</span>
+        <button (click)="increaseQuantity()" class="quantity-btn" aria-label="Increase quantity">
+          <span class="icon-plus"></span>
+        </button>
+      </div>
+
+      <button (click)="remove.emit()" class="remove-btn">
+        <span class="icon-trash"></span>
+        <span>Remove</span>
+      </button>
+    </div>
+  </div>
+</div>

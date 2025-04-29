@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from "@angular/forms";
 import {ProductCardComponent} from "./product-card/product-card.component";
@@ -17,7 +17,12 @@ import {Product, productImages, similarProducts} from "../../../utils/mockData";
   templateUrl: './product-page.component.html',
   styleUrl: './product-page.component.css'
 })
-export class ProductPageComponent {
+export class ProductPageComponent implements OnInit {
+
+  ngOnInit(): void {
+    window.scrollTo(0, 0);
+  }
+
   productImages = productImages;
 
   currentImageIndex = 0;
